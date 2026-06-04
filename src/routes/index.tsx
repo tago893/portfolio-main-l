@@ -175,10 +175,11 @@ function HomePage() {
                 Backend engineer into search, retrieval, and AI systems.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                Junior software engineer building backend services and experimenting with
-                RAG pipelines, vector search, and LLM orchestration. Recent work: 2.8M-paper
-                vector search with 66% latency cut, multi-provider LLM gateway, and
-                event-driven data platforms. MS in Computer Science from Portland State.
+                MS CS grad from Portland State, building AI and data systems that turn
+                large-scale information into secure, searchable, and usable insights.
+                Into backend engineering, RAG pipelines, vector databases, and LLM
+                orchestration. I like 0-to-1 work — designing, prototyping, and turning
+                ideas into working systems.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
