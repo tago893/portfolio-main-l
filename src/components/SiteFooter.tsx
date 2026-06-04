@@ -36,7 +36,7 @@ export function SiteFooter() {
             <Mail className="size-4" /> Email
           </a>
         </div>
-        <div className="text-xs text-zinc-600">© {year} · Seattle, WA</div>
+        <div className="text-xs text-zinc-600">© {year} · Hayward, CA</div>
       </div>
     </footer>
   );
