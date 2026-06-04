@@ -263,19 +263,43 @@ function ProjectsPage() {
                         <h3 className="font-display text-2xl md:text-3xl font-semibold text-zinc-100 mb-4 text-balance">
                           {p.title}
                         </h3>
-                        <p className="text-base leading-relaxed text-zinc-400 mb-6 max-w-[52ch]">
-                          {p.blurb}
+                        <p className="text-base md:text-lg leading-snug text-zinc-200 mb-6 max-w-[52ch] border-l-2 border-accent/70 pl-4">
+                          {p.takeaway}
                         </p>
-                        <ul className="space-y-2 mb-6 max-w-[56ch]">
-                          {p.highlights.map((h) => (
-                            <li
-                              key={h}
-                              className="text-sm leading-relaxed text-zinc-400 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-zinc-700"
+                        <dl className="grid grid-cols-3 gap-3 mb-6 max-w-[44ch]">
+                          {p.metrics.map((m) => (
+                            <div
+                              key={m.label}
+                              className="rounded-lg bg-zinc-900/60 ring-1 ring-zinc-900 px-3 py-3"
                             >
-                              {h}
-                            </li>
+                              <dt className="text-[10px] uppercase tracking-[0.14em] text-zinc-500 mb-1">
+                                {m.label}
+                              </dt>
+                              <dd className="font-display text-lg font-semibold text-zinc-100 leading-none">
+                                {m.value}
+                              </dd>
+                            </div>
                           ))}
-                        </ul>
+                        </dl>
+                        <details className="mb-6 group/details">
+                          <summary className="cursor-pointer text-xs uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-300 transition-colors list-none flex items-center gap-2">
+                            <span className="transition-transform group-open/details:rotate-90">›</span>
+                            More detail
+                          </summary>
+                          <p className="text-sm leading-relaxed text-zinc-400 mt-4 max-w-[52ch]">
+                            {p.blurb}
+                          </p>
+                          <ul className="space-y-2 mt-3 max-w-[56ch]">
+                            {p.highlights.map((h) => (
+                              <li
+                                key={h}
+                                className="text-sm leading-relaxed text-zinc-400 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-zinc-700"
+                              >
+                                {h}
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
                         <div className="flex flex-wrap gap-1.5 mb-6">
                           {p.tech.map((t) => (
                             <span
