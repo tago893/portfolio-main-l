@@ -1,52 +1,59 @@
-## Portfolio + Blog Build Plan
+## Update Portfolio with Resume Content
 
-Build a personal portfolio for Varun Chikkala in the "Editorial long-scroll" direction, plus a markdown-based blog section.
+Your new resume has fresher and more accurate info than the old CV site I built from. I'll sync the portfolio to match and wire up a Resume download button.
 
-### Design tokens (copied verbatim from chosen direction)
-- Base `#0a0a1a`, accent `#4f46e5`, zinc neutrals
-- Fonts: Space Grotesk (display) + DM Sans (body), loaded via Google Fonts in `__root.tsx`
-- Tokens written into `src/styles.css` as oklch equivalents + accent indigo
+### Content updates (replace old CV content)
 
-### Routes
-- `/` — Home (hero, featured project APIVerse, education timeline, projects grid, skills/experience, hobbies, blog preview, footer)
-- `/blog` — Blog index listing all markdown posts (date, title, excerpt, read time)
-- `/blog/$slug` — Individual post page rendering markdown
+**Contact (footer + hero)**
+- Email: chvarun245@gmail.com
+- Location: Seattle, WA
+- Phone: kept private (won't render)
 
-Shared nav + footer in `__root.tsx` so they appear on every page.
+**Hero**
+- Reposition as "Software engineer with 1+ year of experience" — backend services, data platforms, AI-enabled apps
+- Update location chip from Portland → Seattle
 
-### Real content (from CV)
-- Hero: name, "MS Computer Science from Portland State…web dev + ML"
-- Education: Portland State (MS CS, 2023–25), VIT Vellore (B.Tech CS Bioinformatics, 2019–23)
-- Skills: Python, C/C++, Java, SQL/PostgreSQL/NoSQL, Flask, Docker/Kubernetes, GCP/Azure, ML, Web Dev
-- Projects: APIVerse (featured), TriMet GPS Insights, Code Documenter — with real tech, impact bullets, GitHub links
-- Hobbies, Contact, LinkedIn + GitHub links in footer
+**Experience section (NEW — replaces hobby-focused "Trajectory" sidebar)**
+- Software Engineer · Live Music Project · Apr 2025–Present (Redis layer, ETL+SendGrid, Django RBAC, KPI metrics)
+- Graduate Student Researcher · Portland State · Apr–Aug 2025 (TriMet ETL 350K daily records, NL-to-SQL)
+- Software Engineer Intern · Aham Learning · Jan–Jun 2023 (Laravel/Neo4j dashboards, graph course models)
 
-### Blog implementation (markdown files in repo)
-- Posts live in `src/content/posts/*.md` with frontmatter: `title`, `date`, `excerpt`, `readTime`, `tags`
-- Use Vite's `import.meta.glob` to load all posts at build time (no server runtime needed)
-- Parse frontmatter with `gray-matter`, render markdown with `react-markdown` + `remark-gfm`
-- Typography styled via Tailwind prose-like custom styles matching the dark editorial theme
-- Ship 2 sample starter posts (one welcome, one technical) so the section isn't empty
-- Adding a new post = drop a `.md` file in `src/content/posts/` and it appears automatically
+**Education**
+- Keep PSU MS CS, add coursework line (Data Engineering, LLMs, DBMS, Cloud Engineering, etc.)
+- Keep VIT B.Tech entry
 
-### Files to create/modify
-- `src/styles.css` — replace tokens with the chosen direction's palette
-- `src/routes/__root.tsx` — add Google Fonts, shared Nav + Footer
-- `src/routes/index.tsx` — full portfolio page
-- `src/routes/blog.index.tsx` — blog list
-- `src/routes/blog.$slug.tsx` — post detail with `head()` SEO from frontmatter
-- `src/lib/posts.ts` — glob + frontmatter loader, `getAllPosts()`, `getPost(slug)`
-- `src/content/posts/welcome.md`, `src/content/posts/scaling-apis.md` — starter posts
-- `src/components/Nav.tsx`, `src/components/Footer.tsx`, `src/components/ProjectCard.tsx`
-- Hero/project images: generate via image tool (APIVerse hero, TriMet heatmap, Code Documenter) and save under `src/assets/`
-- Each route gets its own `head()` meta (title, description, og:*)
+**Projects (replace APIVerse / TriMet / Code Documenter with current ones)**
+- *Featured:* Automated Vulnerability & Malware Analyzer (Python, LangChain, AST, Gemini) — SAST + LLM malware scoring
+- MCP DevOps PR Agent (FastAPI, MCP, GitHub Actions, Gemini, Bandit)
+- AI Conversational Assistant (Python, Azure AI Search, Milvus) — RAG on 2.8M paper embeddings
+- Generate 3 new images to replace apiverse/trimet/codedoc assets to match the new project themes; delete the old ones
 
-### Dependencies
-- `bun add gray-matter react-markdown remark-gfm`
+**Skills (replace old list with categorized chips)**
+- Languages: Java, Python, SQL, JavaScript, TypeScript, Bash
+- Backend: Spring Boot, Django, FastAPI, Flask, REST, Microservices
+- Data & Messaging: Kafka, AWS SQS, GCP Pub/Sub, RabbitMQ
+- Databases: PostgreSQL, MySQL, Redis, Elasticsearch, Milvus, MongoDB
+- Cloud & DevOps: AWS (EC2/S3/RDS/SQS), GCP Cloud Run, Docker, Kubernetes, GitHub Actions, Jenkins
+- Render as grouped sub-sections so the breadth shows
 
-### What stays out of scope (can add later)
-- No CMS / auth (per your pick: markdown files)
-- No contact form backend — footer shows email + social links only
-- No resume PDF (will reuse "Resume" button as a link placeholder you can wire up)
+### Resume download
+- Upload the PDF via `lovable-assets create --file /mnt/user-uploads/sde_resume_ft.pdf` → save pointer to `src/assets/resume.pdf.asset.json`
+- Replace the nav "Connect" button (and add a hero CTA) with **"Resume"** linking to the CDN URL with `download` attribute
+- Keep LinkedIn/GitHub/Email in footer
 
-After build, I'll verify the home page, blog index, and one post render correctly in the preview.
+### Blog
+- Unchanged (markdown system still works; sample posts stay)
+- Update one starter post's bio reference (Portland → Seattle) for consistency
+
+### Files changed
+- `src/routes/index.tsx` — rewrite hero, projects, experience timeline, skills, replace asset imports
+- `src/components/SiteNav.tsx` — Resume button → CDN url
+- `src/components/SiteFooter.tsx` — update email
+- `src/assets/resume.pdf.asset.json` — new CDN pointer
+- `src/assets/{vuln-analyzer,mcp-agent,rag-assistant}.jpg` — 3 new project images
+- Delete old `src/assets/{apiverse,trimet,codedoc}.jpg`
+- `src/content/posts/welcome.md` — tiny location tweak
+
+### Out of scope
+- I won't put your phone number on the public site (uncommon for portfolios). Tell me if you want it visible.
+- LinkedIn URL — your resume doesn't include it; I'll leave the existing placeholder. Send me the URL and I'll wire it.

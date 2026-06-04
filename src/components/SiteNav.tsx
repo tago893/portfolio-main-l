@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import resumePdf from "@/assets/resume.pdf.asset.json";
 
 export function SiteNav() {
   return (
@@ -22,12 +23,13 @@ export function SiteNav() {
             About
           </Link>
           <a
-            href="https://www.linkedin.com/"
+            href={resumePdf.url}
             target="_blank"
             rel="noreferrer"
+            download="Varun-Chikkala-Resume.pdf"
             className="bg-accent text-zinc-100 px-4 py-2 rounded-md ring-1 ring-accent hover:bg-accent/90 transition-transform active:scale-95"
           >
-            Connect
+            Resume
           </a>
         </div>
       </div>
