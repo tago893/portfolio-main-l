@@ -46,7 +46,7 @@ const skillGroups: { label: string; icon: typeof Code2; items: string[] }[] = [
   {
     label: "Data & Messaging",
     icon: Network,
-    items: ["Apache Kafka", "AWS SQS", "GCP Pub/Sub", "RabbitMQ", "Event-driven", "Async"],
+    items: ["Apache Kafka", "AWS SQS", "GCP Pub/Sub", "RabbitMQ"],
   },
   {
     label: "Databases & Search",
