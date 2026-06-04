@@ -140,6 +140,17 @@ const experience: {
     ],
     tech: ["Linux", "Bash", "Docker"],
   },
+  {
+    role: "Software Engineer Intern",
+    org: "Aham Learning",
+    period: "Jan 2023 — Jun 2023",
+    bullets: [
+      "Built responsive dashboards for students and tutors using JavaScript, PHP, Laravel, MySQL, and Neo4j.",
+      "Prototyped Neo4j graph models for 100+ course relationships, mapping prerequisites and learning paths.",
+      "Performed functional and UI testing across 5+ dashboard workflows, surfacing layout and navigation regressions.",
+    ],
+    tech: ["JavaScript", "MySQL", "MongoDB"],
+  },
 ];
 
 
