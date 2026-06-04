@@ -112,8 +112,8 @@ const experience: {
     org: "Live Music Project",
     period: "Jan 2026 — Present",
     bullets: [
-      "Backend developer on the event and campaign operations platform, partnering with stakeholders to harden analytics reliability and campaign workflows.",
-      "Improving access control for orchestra managers, admins, and internal users across event management and reporting surfaces.",
+      "Own backend services for event and campaign operations, hardening analytics reliability and campaign execution pipelines.",
+      "Design and implement access control for orchestra managers, admins, and internal users across event management and reporting surfaces.",
     ],
     tech: ["Python", "Django", "PostgreSQL", "Redis", "REST APIs"],
   },
@@ -145,9 +145,9 @@ const experience: {
     org: "Aham Learning",
     period: "Jan 2023 — Jun 2023",
     bullets: [
-      "Built responsive dashboards for students and tutors using JavaScript, PHP, Laravel, MySQL, and Neo4j.",
-      "Prototyped Neo4j graph models for 100+ course relationships, mapping prerequisites and learning paths.",
-      "Performed functional and UI testing across 5+ dashboard workflows, surfacing layout and navigation regressions.",
+      "Built student and tutor dashboards end-to-end with JavaScript, PHP, Laravel, MySQL, and Neo4j.",
+      "Modeled 100+ course relationships in Neo4j, enabling prerequisite and learning-path queries.",
+      "Owned QA for 5+ dashboard workflows, catching layout and navigation regressions before release.",
     ],
     tech: ["JavaScript", "MySQL", "MongoDB"],
   },
