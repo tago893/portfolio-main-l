@@ -1,7 +1,7 @@
 ---
 title: "Draft Coming Soon"
 date: "2026-06-04"
-excerpt: "Placeholder post — a real draft will land here shortly."
+excerpt: "Placeholder post - a real draft will land here shortly."
 readTime: "1 min read"
 tags: ["draft"]
 ---

@@ -17,7 +17,7 @@ import type { LucideIcon } from "lucide-react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Varun Chikkala — Software Engineer" },
+      { title: "Varun Chikkala | Software Engineer" },
       {
         name: "description",
         content:
@@ -110,7 +110,7 @@ const experience: {
   {
     role: "Software Engineer",
     org: "Live Music Project",
-    period: "Jan 2026 — Present",
+    period: "Jan 2026 - Present",
     bullets: [
       "Building backend services for event and campaign operations, hardening analytics reliability and campaign execution pipelines.",
       "Implementing access control for orchestra managers, admins, and internal users across event management and reporting surfaces.",
@@ -120,7 +120,7 @@ const experience: {
   {
     role: "Software Engineer",
     org: "Portland State University",
-    period: "Apr 2025 — Present",
+    period: "Apr 2025 - Present",
     bullets: [
       "Built a RAG pipeline over 2.8M+ ArXiv papers using SPECTER embeddings and Milvus vector search, cutting query latency by 66%.",
       "Developed a flexible LLM service layer supporting Gemini, OpenAI, and Mistral to swap providers and improve response reliability.",
@@ -132,9 +132,9 @@ const experience: {
   {
     role: "Software Engineer (IT Specialist)",
     org: "The Computer Action Team @ PSU",
-    period: "Sep 2023 — Feb 2025",
+    period: "Sep 2023 - Feb 2025",
     bullets: [
-      "Supported Linux and Windows systems across the College of Engineering — troubleshooting lab machines, software access, and configuration issues.",
+      "Supported Linux and Windows systems across the College of Engineering: troubleshooting lab machines, software access, and configuration issues.",
       "Collaborated with IT staff and faculty to resolve tickets, document recurring issues, and improve reliability of technical workflows.",
       "Built hands-on experience with scripting, systems administration, networking, and DevOps practices through CAT's technical training.",
     ],
@@ -143,7 +143,7 @@ const experience: {
   {
     role: "Software Engineer Intern",
     org: "Aham Learning",
-    period: "Jan 2023 — Jun 2023",
+    period: "Jan 2023 - Jun 2023",
     bullets: [
       "Built student and tutor dashboards end-to-end with JavaScript, PHP, Laravel, MySQL, and Neo4j.",
       "Modeled 100+ course relationships in Neo4j, enabling prerequisite and learning-path queries.",
@@ -187,7 +187,7 @@ function HomePage() {
                 MS CS grad from Portland State, building AI and data systems that turn
                 large-scale information into secure, searchable, and usable insights.
                 Into backend engineering, RAG pipelines, vector databases, and LLM
-                orchestration. I like 0-to-1 work — designing, prototyping, and turning
+                orchestration. I like 0-to-1 work. Designing, prototyping, and turning
                 ideas into working systems.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
@@ -329,7 +329,7 @@ function HomePage() {
                   >
                     <p className="text-sm font-medium text-zinc-100">Resume (PDF)</p>
                     <p className="mt-2 text-xs text-zinc-400">
-                      Full work history, projects, and skills — one page.
+                      Full work history, projects, and skills, one page.
                     </p>
                   </a>
                 </div>
@@ -344,7 +344,7 @@ function HomePage() {
                   <div className="space-y-5 max-w-[62ch] text-[15px] leading-relaxed text-zinc-400 text-pretty">
                     <p>
                       My path into software started at VIT Vellore, where a bioinformatics-flavored
-                      CS degree pulled me toward data-heavy problems early — the kind where the
+                      CS degree pulled me toward data-heavy problems early, the kind where the
                       shape of the data matters as much as the code around it.
                     </p>
                     <p>
@@ -352,7 +352,7 @@ function HomePage() {
                       <span className="text-zinc-200">Aham Learning</span>, building student and
                       tutor dashboards end-to-end. I modeled course relationships in Neo4j, shipped
                       features across the stack, and learned how messy a product feels right before
-                      a release — and how good it feels to fix the last bug at midnight.
+                      a release, and how good it feels to fix the last bug at midnight.
                     </p>
                     <p>
                       I moved to the U.S. for my{" "}
@@ -362,14 +362,14 @@ function HomePage() {
                       to do for a living: a RAG pipeline over 2.8M+ ArXiv papers with SPECTER
                       embeddings on Milvus, a provider-agnostic LLM service layer, a batch
                       ingestion pipeline that chews through 80K papers per run. Cutting query
-                      latency by 66% wasn't a metric on a slide — it was the moment search felt
+                      latency by 66% wasn't a metric on a slide. it was the moment search felt
                       like it belonged to the user instead of the system.
                     </p>
                     <p>
                       Alongside research, I worked with{" "}
                       <span className="text-zinc-200">the Computer Action Team</span> at PSU,
                       keeping Linux and Windows lab environments running for the College of
-                      Engineering. Tickets, scripting, late-night reboots — unglamorous, but it
+                      Engineering. Tickets, scripting, late-night reboots. unglamorous, but it
                       gave me a respect for the boring parts of reliability that no class ever
                       could.
                     </p>
@@ -378,13 +378,12 @@ function HomePage() {
                       <span className="text-zinc-200">Live Music Project</span>, building backend
                       services for event operations, hardening analytics, and shipping access
                       control across internal tools. I'm a junior SDE, and I lean into that
-                      honestly — I'm here to learn from people who've shipped at scale, take on the
+                      honestly. Im here to learn from people who've shipped at scale, take on the
                       unsexy work, and grow into the kind of engineer teams actually want around.
                     </p>
                     <p>
                       The work I want to do next sits at the intersection of{" "}
-                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>
-                      {" "}— the systems that quietly make information findable and useful at scale.
+                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>. the systems that quietly make information findable and useful at scale.
                       If that's the world you live in, I'd love to talk.
                     </p>
                   </div>
@@ -417,7 +416,7 @@ function HomePage() {
                           {job.bullets.map((b) => (
                             <li
                               key={b}
-                              className="text-sm leading-relaxed text-pretty text-zinc-400 pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-zinc-700"
+                              className="text-sm leading-relaxed text-pretty text-zinc-400 pl-4 relative before:content-['-'] before:absolute before:left-0 before:text-zinc-700"
                             >
                               {b}
                             </li>
@@ -454,7 +453,7 @@ function HomePage() {
                         MS in Computer Science
                       </h4>
                       <p className="text-zinc-500 mb-3">
-                        Portland State University · 2023 — 2025 · GPA 3.88
+                        Portland State University · 2023 - 2025 · GPA 3.88
                       </p>
                       <p className="max-w-[60ch] text-pretty leading-relaxed text-sm text-zinc-400">
                         Coursework: Data Engineering, Large Language Models, Software Engineering,
@@ -467,9 +466,9 @@ function HomePage() {
                       <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">
                         B.Tech in Computer Science (Bioinformatics)
                       </h4>
-                      <p className="text-zinc-500 mb-3">VIT, Vellore · 2019 — 2023</p>
+                      <p className="text-zinc-500 mb-3">VIT, Vellore · 2019 - 2023</p>
                       <p className="max-w-[60ch] text-pretty leading-relaxed text-sm text-zinc-400">
-                        Foundation in algorithms, systems, and computational biology — where the
+                        Foundation in algorithms, systems, and computational biology, where the
                         pull toward data-heavy software first started.
                       </p>
                     </div>
@@ -482,8 +481,8 @@ function HomePage() {
                     Projects
                   </h3>
                   <p className="max-w-[56ch] mb-6 text-zinc-400">
-                    The full catalog — grouped by AI &amp; developer tools, data &amp; ML, and web
-                    &amp; APIs — lives on a dedicated page.
+                    The full catalog, grouped by AI &amp; developer tools, data &amp; ML, and web
+                    &amp; APIs, lives on a dedicated page.
                   </p>
                   <Link
                     to="/projects"

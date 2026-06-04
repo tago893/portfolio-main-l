@@ -12,13 +12,13 @@ import mcpImg from "@/assets/mcp-agent.jpg";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects — Varun Chikkala" },
+      { title: "Projects | Varun Chikkala" },
       {
         name: "description",
         content:
           "Selected engineering projects across infra monitoring, AI document intelligence, data engineering, AWS, and backend systems.",
       },
-      { property: "og:title", content: "Projects — Varun Chikkala" },
+      { property: "og:title", content: "Projects | Varun Chikkala" },
       {
         property: "og:description",
         content:
@@ -50,7 +50,7 @@ const categories: { id: string; label: string; description: string; projects: Pr
   {
     id: "featured",
     label: "Featured",
-    description: "The two flagship builds — biggest scope, deepest systems work.",
+    description: "The two flagship builds - biggest scope, deepest systems work.",
     projects: [
       {
         title: "AIOM — Real-Time Infra Monitoring",
@@ -205,7 +205,7 @@ const categories: { id: string; label: string; description: string; projects: Pr
         image: eventseatImg,
         year: "2025",
         takeaway:
-          "Ticket reservation backend that holds seats correctly under load — no double-booking.",
+          "Ticket reservation backend that holds seats correctly under load, no double-booking.",
         metrics: [
           { value: "Redis TTL", label: "seat holds" },
           { value: "Idempotent", label: "booking API" },
@@ -241,7 +241,7 @@ function ProjectsPage() {
               Things I've built.
             </h1>
             <p className="text-lg leading-relaxed max-w-[60ch] text-pretty mb-10">
-              A mix of production work, research projects, and side experiments — grouped by what
+              A mix of production work, research projects, and side experiments, grouped by what
               they do, not when I shipped them.
             </p>
             <nav className="flex flex-wrap gap-2">

@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Varun Chikkala — Engineer & Builder" },
+      { title: "Varun Chikkala | Engineer & Builder" },
       {
         name: "description",
         content:
-          "Portfolio and writing by Varun Chikkala — MS in Computer Science from Portland State, building full-stack and machine learning systems.",
+          "Portfolio and writing by Varun Chikkala - MS in Computer Science from Portland State, building full-stack and machine learning systems.",
       },
       { name: "author", content: "Varun Chikkala" },
-      { property: "og:title", content: "Varun Chikkala — Engineer & Builder" },
+      { property: "og:title", content: "Varun Chikkala | Engineer & Builder" },
       {
         property: "og:description",
         content: "Portfolio and writing on engineering, ML, and the pursuit of clean code.",

@@ -6,12 +6,12 @@ import { getAllPosts, formatDate } from "@/lib/posts";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "Blog — Varun Chikkala" },
+      { title: "Blog | Varun Chikkala" },
       {
         name: "description",
         content: "Writing on engineering, machine learning, and clean code by Varun Chikkala.",
       },
-      { property: "og:title", content: "Blog — Varun Chikkala" },
+      { property: "og:title", content: "Blog | Varun Chikkala" },
       {
         property: "og:description",
         content: "Writing on engineering, machine learning, and clean code.",
@@ -45,7 +45,7 @@ function BlogIndex() {
 
           <div className="divide-y divide-zinc-900/60">
             {posts.length === 0 && (
-              <p className="py-8 text-zinc-500">No posts yet — first one coming soon.</p>
+              <p className="py-8 text-zinc-500">No posts yet. First one coming soon.</p>
             )}
             {posts.map((post) => (
               <article key={post.slug} className="py-10 group">
