@@ -228,7 +228,7 @@ function HomePage() {
                   Selected Work
                 </span>
                 <h2 className="font-display text-4xl font-semibold text-zinc-100 text-balance">
-                  Things I've shipped lately.
+                  Selected work, shipped recently.
                 </h2>
               </div>
               <Link
