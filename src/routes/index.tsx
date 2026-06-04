@@ -347,6 +347,20 @@ function HomePage() {
                             </li>
                           ))}
                         </ul>
+                        <div className="flex flex-wrap gap-1.5 mt-4">
+                          {job.tech.map((t) => {
+                            const TIcon = skillIconMap[t] ?? Code2;
+                            return (
+                              <span
+                                key={t}
+                                className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-900 ring-1 ring-zinc-800 rounded text-[11px] text-zinc-400"
+                              >
+                                <TIcon className="size-3 text-zinc-500" />
+                                {t}
+                              </span>
+                            );
+                          })}
+                        </div>
                       </div>
                     ))}
                   </div>
