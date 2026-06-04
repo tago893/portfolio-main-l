@@ -477,55 +477,94 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Blog preview */}
+        {/* Blog preview / writing */}
         <section id="blog" className="py-32 px-6 bg-zinc-950/40 border-t border-zinc-900/60">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-end justify-between mb-16 gap-6 flex-wrap">
               <div>
-                <h2 className="font-display text-4xl font-semibold text-zinc-100 mb-4">
+                <span className="text-accent font-display text-sm font-semibold tracking-widest uppercase mb-3 block">
                   The Latent Space
+                </span>
+                <h2 className="font-display text-4xl font-semibold text-zinc-100 mb-4">
+                  {posts.length === 0 ? "Currently writing." : "Notes & writing."}
                 </h2>
-                <p className="max-w-[40ch] text-pretty">
-                  Notes on engineering, machine learning, and the pursuit of clean code.
+                <p className="max-w-[48ch] text-pretty">
+                  {posts.length === 0
+                    ? "Working on a few essays from the last year of building retrieval and LLM systems. First drops soon."
+                    : "Notes on engineering, machine learning, and the pursuit of clean code."}
                 </p>
               </div>
-              <Link
-                to="/blog"
-                className="text-sm font-medium text-accent hover:underline decoration-2 underline-offset-4"
-              >
-                View all posts →
-              </Link>
+              {posts.length > 0 && (
+                <Link
+                  to="/blog"
+                  className="text-sm font-medium text-accent hover:underline decoration-2 underline-offset-4"
+                >
+                  View all posts →
+                </Link>
+              )}
             </div>
 
-            <div className="divide-y divide-zinc-900/60">
-              {posts.length === 0 && (
-                <p className="py-8 text-zinc-500">No posts yet. Check back soon.</p>
-              )}
-              {posts.map((post) => (
-                <article key={post.slug} className="py-8 group">
-                  <Link
-                    to="/blog/$slug"
-                    params={{ slug: post.slug }}
-                    className="grid md:grid-cols-12 gap-8 items-center"
+            {posts.length === 0 ? (
+              <div className="grid md:grid-cols-3 gap-4">
+                {[
+                  {
+                    eyebrow: "RAG",
+                    title: "Cutting RAG latency 66% on 2.8M papers",
+                    blurb: "Embedding choice, Milvus index tuning, and the small wins that compounded.",
+                  },
+                  {
+                    eyebrow: "LLM Infra",
+                    title: "A provider-agnostic LLM service layer",
+                    blurb: "Why swappable providers (Gemini, OpenAI, Mistral) beat a single SDK lock-in.",
+                  },
+                  {
+                    eyebrow: "Data Pipelines",
+                    title: "Ingesting 80K papers per batch, reliably",
+                    blurb: "Pub/Sub, idempotency, and the boring parts that keep batch jobs honest.",
+                  },
+                ].map((t) => (
+                  <div
+                    key={t.title}
+                    className="p-6 rounded-xl ring-1 ring-zinc-900 bg-zinc-950/60 hover:ring-accent/30 transition-colors"
                   >
-                    <time className="md:col-span-2 text-sm text-zinc-600">
-                      {formatDate(post.date)}
-                    </time>
-                    <div className="md:col-span-8">
-                      <h3 className="text-xl font-display font-semibold text-zinc-200 group-hover:text-accent transition-colors">
-                        {post.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-zinc-500 line-clamp-1">{post.excerpt}</p>
-                    </div>
-                    <div className="md:col-span-2 md:text-right">
-                      <span className="text-xs uppercase tracking-widest text-zinc-700">
-                        {post.readTime}
-                      </span>
-                    </div>
-                  </Link>
-                </article>
-              ))}
-            </div>
+                    <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent mb-3">
+                      {t.eyebrow} · Draft
+                    </p>
+                    <h3 className="font-display text-lg font-semibold text-zinc-100 mb-2 text-pretty">
+                      {t.title}
+                    </h3>
+                    <p className="text-sm text-zinc-500 text-pretty">{t.blurb}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="divide-y divide-zinc-900/60">
+                {posts.map((post) => (
+                  <article key={post.slug} className="py-8 group">
+                    <Link
+                      to="/blog/$slug"
+                      params={{ slug: post.slug }}
+                      className="grid md:grid-cols-12 gap-8 items-center"
+                    >
+                      <time className="md:col-span-2 text-sm text-zinc-600">
+                        {formatDate(post.date)}
+                      </time>
+                      <div className="md:col-span-8">
+                        <h3 className="text-xl font-display font-semibold text-zinc-200 group-hover:text-accent transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-zinc-500 line-clamp-1">{post.excerpt}</p>
+                      </div>
+                      <div className="md:col-span-2 md:text-right">
+                        <span className="text-xs uppercase tracking-widest text-zinc-700">
+                          {post.readTime}
+                        </span>
+                      </div>
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>
