@@ -158,15 +158,15 @@ function HomePage() {
           <div className="max-w-7xl mx-auto">
             <header className="max-w-4xl">
               <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent mb-6">
-                Varun Chikkala · Seattle, WA
+                Varun Chikkala · Hayward, CA
               </span>
               <h1 className="font-display text-5xl md:text-7xl font-semibold text-zinc-100 leading-tight mb-8 text-balance">
-                Building scalable backends, data platforms, and AI-enabled products.
+                Backend & cloud systems for search, retrieval, and AI-enabled products.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                Software engineer with 1+ year of experience shipping production systems in Java
-                and Python. MS in Computer Science from Portland State University. Strong in REST
-                APIs, microservices, SQL/NoSQL, and cloud-native development.
+                Software engineer focused on backend services, RAG pipelines, vector
+                databases, and LLM orchestration. MS in Computer Science from Portland
+                State University. Comfortable across Python, Java, AWS, and GCP.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
