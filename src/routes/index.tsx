@@ -336,6 +336,60 @@ function HomePage() {
               </aside>
 
               <div className="lg:col-span-8 space-y-20">
+                {/* About narrative */}
+                <div>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
+                    About
+                  </h3>
+                  <div className="space-y-5 max-w-[62ch] text-[15px] leading-relaxed text-zinc-400 text-pretty">
+                    <p>
+                      My path into software started at VIT Vellore, where a bioinformatics-flavored
+                      CS degree pulled me toward data-heavy problems early — the kind where the
+                      shape of the data matters as much as the code around it.
+                    </p>
+                    <p>
+                      My first taste of real engineering came at{" "}
+                      <span className="text-zinc-200">Aham Learning</span>, building student and
+                      tutor dashboards end-to-end. I modeled course relationships in Neo4j, shipped
+                      features across the stack, and learned how messy a product feels right before
+                      a release — and how good it feels to fix the last bug at midnight.
+                    </p>
+                    <p>
+                      I moved to the U.S. for my{" "}
+                      <span className="text-zinc-200">MS in Computer Science at Portland State</span>,
+                      and that's where things clicked. I went deep on distributed systems, data
+                      engineering, and LLMs, and started building the kind of work I actually want
+                      to do for a living: a RAG pipeline over 2.8M+ ArXiv papers with SPECTER
+                      embeddings on Milvus, a provider-agnostic LLM service layer, a batch
+                      ingestion pipeline that chews through 80K papers per run. Cutting query
+                      latency by 66% wasn't a metric on a slide — it was the moment search felt
+                      like it belonged to the user instead of the system.
+                    </p>
+                    <p>
+                      Alongside research, I worked with{" "}
+                      <span className="text-zinc-200">the Computer Action Team</span> at PSU,
+                      keeping Linux and Windows lab environments running for the College of
+                      Engineering. Tickets, scripting, late-night reboots — unglamorous, but it
+                      gave me a respect for the boring parts of reliability that no class ever
+                      could.
+                    </p>
+                    <p>
+                      Today I'm an early-career engineer at{" "}
+                      <span className="text-zinc-200">Live Music Project</span>, building backend
+                      services for event operations, hardening analytics, and shipping access
+                      control across internal tools. I'm a junior SDE, and I lean into that
+                      honestly — I'm here to learn from people who've shipped at scale, take on the
+                      unsexy work, and grow into the kind of engineer teams actually want around.
+                    </p>
+                    <p>
+                      The work I want to do next sits at the intersection of{" "}
+                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>
+                      {" "}— the systems that quietly make information findable and useful at scale.
+                      If that's the world you live in, I'd love to talk.
+                    </p>
+                  </div>
+                </div>
+
                 {/* Experience */}
                 <div>
                   <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
