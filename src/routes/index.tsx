@@ -46,7 +46,7 @@ const skillGroups: { label: string; icon: typeof Code2; items: string[] }[] = [
   {
     label: "Data & Messaging",
     icon: Network,
-    items: ["Apache Kafka", "AWS SQS", "GCP Pub/Sub", "RabbitMQ", "Event-driven", "Async"],
+    items: ["Apache Kafka", "AWS SQS", "GCP Pub/Sub", "RabbitMQ"],
   },
   {
     label: "Databases & Search",
@@ -139,6 +139,17 @@ const experience: {
       "Built hands-on experience with scripting, systems administration, networking, and DevOps practices through CAT's technical training.",
     ],
     tech: ["Linux", "Bash", "Docker"],
+  },
+  {
+    role: "Software Engineer Intern",
+    org: "Aham Learning",
+    period: "Jan 2023 — Jun 2023",
+    bullets: [
+      "Built responsive dashboards for students and tutors using JavaScript, PHP, Laravel, MySQL, and Neo4j.",
+      "Prototyped Neo4j graph models for 100+ course relationships, mapping prerequisites and learning paths.",
+      "Performed functional and UI testing across 5+ dashboard workflows, surfacing layout and navigation regressions.",
+    ],
+    tech: ["JavaScript", "MySQL", "MongoDB"],
   },
 ];
 
