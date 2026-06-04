@@ -295,6 +295,9 @@ function ProjectsPage() {
                     </article>
                   ))}
                 </div>
+              </section>
+            ))}
+          </div>
         </div>
 
         {/* Bottom CTA */}
