@@ -168,9 +168,18 @@ function HomePage() {
         <section className="pt-48 pb-32 px-6">
           <div className="max-w-7xl mx-auto">
             <header className="max-w-4xl">
-              <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent mb-6">
-                Varun Chikkala · Hayward, CA
-              </span>
+              <div className="flex items-center gap-3 mb-6 flex-wrap">
+                <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-emerald-400/90 bg-emerald-500/10 ring-1 ring-emerald-500/20 px-2.5 py-1 rounded-full">
+                  <span className="relative flex size-1.5">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                    <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
+                  </span>
+                  Open to SDE roles · 2026
+                </span>
+                <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                  Varun Chikkala · Hayward, CA
+                </span>
+              </div>
               <h1 className="font-display text-5xl md:text-7xl font-semibold text-zinc-100 leading-tight mb-8 text-balance">
                 Backend engineer into search, retrieval, and AI systems.
               </h1>
