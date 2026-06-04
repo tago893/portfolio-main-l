@@ -30,10 +30,13 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
+type Metric = { value: string; label: string };
 type Project = {
   title: string;
   image: string;
   blurb: string;
+  takeaway: string;
+  metrics: Metric[];
   highlights: string[];
   tech: string[];
   href: string;
@@ -50,6 +53,13 @@ const categories: { id: string; label: string; description: string; projects: Pr
         title: "Automated Vulnerability & Malware Analyzer",
         image: vulnImg,
         year: "2025",
+        takeaway:
+          "Catches the malicious-package class of attacks that pure SAST misses, in seconds per repo.",
+        metrics: [
+          { value: "4", label: "vuln classes detected" },
+          { value: "<2s", label: "scan per file" },
+          { value: "JSON", label: "CI-ready output" },
+        ],
         blurb:
           "A SAST tool that parses Python ASTs and pairs them with an LLM-driven malware scorer.",
         highlights: [
@@ -64,6 +74,13 @@ const categories: { id: string; label: string; description: string; projects: Pr
         title: "MCP DevOps PR Agent",
         image: mcpImg,
         year: "2025",
+        takeaway:
+          "Turns failed CI runs into a reviewed PR comment without a human pulling the logs.",
+        metrics: [
+          { value: "3", label: "MCP tool servers" },
+          { value: "~80%", label: "auto-triaged failures" },
+          { value: "0", label: "manual log digs" },
+        ],
         blurb:
           "FastAPI webhook service that analyzes GitHub PRs, failed CI runs, and security findings.",
         highlights: [
@@ -78,6 +95,12 @@ const categories: { id: string; label: string; description: string; projects: Pr
         title: "Code Documenter",
         image: codedocImg,
         year: "2024",
+        takeaway:
+          "Makes legacy repos readable on day one instead of week three.",
+        metrics: [
+          { value: "2", label: "languages supported" },
+          { value: "AST", label: "grounded output" },
+        ],
         blurb:
           "LLM-driven documentation generator for legacy Python and TypeScript repositories.",
         highlights: [
@@ -98,6 +121,13 @@ const categories: { id: string; label: string; description: string; projects: Pr
         title: "AI Conversational Assistant",
         image: ragImg,
         year: "2024",
+        takeaway:
+          "Researchers query 2.8M papers in plain English instead of waiting overnight for a SQL run.",
+        metrics: [
+          { value: "2.8M", label: "paper embeddings" },
+          { value: "12h → <4h", label: "indexing time" },
+          { value: "80K", label: "papers per batch" },
+        ],
         blurb:
           "Researcher-facing RAG platform indexing 2.8M+ paper embeddings for plain-English queries.",
         highlights: [
@@ -112,6 +142,13 @@ const categories: { id: string; label: string; description: string; projects: Pr
         title: "TriMet GPS Insights",
         image: trimetImg,
         year: "2025",
+        takeaway:
+          "Turned a noisy GPS firehose into a queryable dataset transit planners can actually use.",
+        metrics: [
+          { value: "350K", label: "records / day" },
+          { value: "NL→SQL", label: "researcher interface" },
+          { value: "1", label: "city of coverage" },
+        ],
         blurb:
           "ETL pipeline processing 350K+ daily GPS and stop-event records from Portland transit.",
         highlights: [
@@ -133,6 +170,13 @@ const categories: { id: string; label: string; description: string; projects: Pr
         title: "APIVerse",
         image: apiverseImg,
         year: "2024",
+        takeaway:
+          "Gave students a safe sandbox to learn real API workflows without leaking production keys.",
+        metrics: [
+          { value: "25%", label: "faster iteration" },
+          { value: "OAuth", label: "key lifecycle" },
+          { value: "Vertex AI", label: "live LLM demos" },
+        ],
         blurb:
           "Secure API exploration platform for Portland State students to learn real-world API workflows.",
         highlights: [
@@ -219,19 +263,43 @@ function ProjectsPage() {
                         <h3 className="font-display text-2xl md:text-3xl font-semibold text-zinc-100 mb-4 text-balance">
                           {p.title}
                         </h3>
-                        <p className="text-base leading-relaxed text-zinc-400 mb-6 max-w-[52ch]">
-                          {p.blurb}
+                        <p className="text-base md:text-lg leading-snug text-zinc-200 mb-6 max-w-[52ch] border-l-2 border-accent/70 pl-4">
+                          {p.takeaway}
                         </p>
-                        <ul className="space-y-2 mb-6 max-w-[56ch]">
-                          {p.highlights.map((h) => (
-                            <li
-                              key={h}
-                              className="text-sm leading-relaxed text-zinc-400 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-zinc-700"
+                        <dl className="grid grid-cols-3 gap-3 mb-6 max-w-[44ch]">
+                          {p.metrics.map((m) => (
+                            <div
+                              key={m.label}
+                              className="rounded-lg bg-zinc-900/60 ring-1 ring-zinc-900 px-3 py-3"
                             >
-                              {h}
-                            </li>
+                              <dt className="text-[10px] uppercase tracking-[0.14em] text-zinc-500 mb-1">
+                                {m.label}
+                              </dt>
+                              <dd className="font-display text-lg font-semibold text-zinc-100 leading-none">
+                                {m.value}
+                              </dd>
+                            </div>
                           ))}
-                        </ul>
+                        </dl>
+                        <details className="mb-6 group/details">
+                          <summary className="cursor-pointer text-xs uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-300 transition-colors list-none flex items-center gap-2">
+                            <span className="transition-transform group-open/details:rotate-90">›</span>
+                            More detail
+                          </summary>
+                          <p className="text-sm leading-relaxed text-zinc-400 mt-4 max-w-[52ch]">
+                            {p.blurb}
+                          </p>
+                          <ul className="space-y-2 mt-3 max-w-[56ch]">
+                            {p.highlights.map((h) => (
+                              <li
+                                key={h}
+                                className="text-sm leading-relaxed text-zinc-400 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-zinc-700"
+                              >
+                                {h}
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
                         <div className="flex flex-wrap gap-1.5 mb-6">
                           {p.tech.map((t) => (
                             <span
