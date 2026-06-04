@@ -6,11 +6,7 @@ import mcpImg from "@/assets/mcp-agent.jpg";
 import ragImg from "@/assets/rag-assistant.jpg";
 import apiverseImg from "@/assets/apiverse.jpg";
 import trimetImg from "@/assets/trimet.jpg";
-import docxImg from "@/assets/docx.jpg";
-import aiomImg from "@/assets/aiom.jpg";
-import expenseImg from "@/assets/expense-recon.jpg";
-import fileHubImg from "@/assets/file-hub.jpg";
-import movieImg from "@/assets/movie-booking.jpg";
+import codedocImg from "@/assets/codedoc.jpg";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -51,29 +47,8 @@ const categories: { id: string; label: string; description: string; projects: Pr
   {
     id: "ai-devtools",
     label: "AI & Developer Tools",
-    description: "LLM-powered platforms, agents, and security tooling.",
+    description: "LLM-powered tooling for security, code review, and developer productivity.",
     projects: [
-      {
-        title: "Docx — AI Document Intelligence",
-        image: docxImg,
-        year: "2026",
-        takeaway:
-          "Notion-style editor meets RAG — fully self-hosted, works with zero network.",
-        metrics: [
-          { value: "9", label: "service docker stack" },
-          { value: "4", label: "LLM providers" },
-          { value: "Offline", label: "first PWA" },
-        ],
-        blurb:
-          "Self-hosted knowledge platform pairing a block editor with semantic AI search and an agentic assistant.",
-        highlights: [
-          "RAG over the user's full corpus with pgvector cosine retrieval and inline source citations.",
-          "Multi-provider LLM layer (Claude, GPT-4o, local Ollama) with cloud→offline failover and cost-aware routing.",
-          "Agentic assistant unifying Anthropic tool_use and OpenAI function-calling over a typed tool registry.",
-        ],
-        tech: ["Python", "FastAPI", "pgvector", "Claude", "OpenAI", "Ollama", "React", "PWA", "Docker"],
-        href: "https://github.com/tago893",
-      },
       {
         title: "Automated Vulnerability & Malware Analyzer",
         image: vulnImg,
@@ -93,7 +68,7 @@ const categories: { id: string; label: string; description: string; projects: Pr
           "Emits machine-readable JSON with severity, vulnerable snippets, and remediation steps.",
         ],
         tech: ["Python", "LangChain", "AST", "Gemini", "JSON"],
-        href: "https://github.com/tago893",
+        href: "https://github.com/varunchikkala",
       },
       {
         title: "MCP DevOps PR Agent",
@@ -114,7 +89,26 @@ const categories: { id: string; label: string; description: string; projects: Pr
           "Exponential backoff and staggered execution for reliable automation.",
         ],
         tech: ["Python", "FastAPI", "MCP", "GitHub Actions", "Gemini", "Bandit"],
-        href: "https://github.com/tago893",
+        href: "https://github.com/varunchikkala",
+      },
+      {
+        title: "Code Documenter",
+        image: codedocImg,
+        year: "2024",
+        takeaway:
+          "Makes legacy repos readable on day one instead of week three.",
+        metrics: [
+          { value: "2", label: "languages supported" },
+          { value: "AST", label: "grounded output" },
+        ],
+        blurb:
+          "LLM-driven documentation generator for legacy Python and TypeScript repositories.",
+        highlights: [
+          "Cuts onboarding time by surfacing intent for undocumented modules.",
+          "Walks ASTs to anchor LLM output to real symbols, not hallucinations.",
+        ],
+        tech: ["Python", "LLMs", "AST parsing"],
+        href: "https://github.com/sriramnurani1995",
       },
     ],
   },
@@ -142,28 +136,7 @@ const categories: { id: string; label: string; description: string; projects: Pr
           "LLM abstraction across Gemini, OpenAI, and Hugging Face — model calls decoupled from ranking.",
         ],
         tech: ["Python", "Milvus", "Azure AI Search", "Gemini", "OpenAI"],
-        href: "https://github.com/tago893/dipr-work",
-      },
-      {
-        title: "Expense Reconciliation & Data Automation",
-        image: expenseImg,
-        year: "2025",
-        takeaway:
-          "Matches receipts against public payment records to surface vendor and amount mismatches automatically.",
-        metrics: [
-          { value: "OCR", label: "invoice extraction" },
-          { value: "BigQuery", label: "warehouse" },
-          { value: "NL→SQL", label: "audit queries" },
-        ],
-        blurb:
-          "Live reconciliation pipeline ingesting USAspending.gov payments and matching against OCR'd invoices.",
-        highlights: [
-          "Pulled vendor-payment records into BigQuery and processed Kaggle receipt/invoice images via OCR + LLM extraction.",
-          "Flagged vendor, amount, date, and payable mismatches against public payment data.",
-          "Enabled SQL and natural-language querying for reporting, exception review, and audit workflows.",
-        ],
-        tech: ["Python", "FastAPI", "BigQuery", "OCR", "LLM", "SQL", "Redis", "Docker"],
-        href: "https://github.com/tago893",
+        href: "https://github.com/varunchikkala",
       },
       {
         title: "TriMet GPS Insights",
@@ -184,42 +157,14 @@ const categories: { id: string; label: string; description: string; projects: Pr
           "MapboxGL clustering and route heatmaps for visual exploration.",
         ],
         tech: ["Python", "PostgreSQL", "Google Cloud", "MapboxGL"],
-        href: "https://github.com/sriramnurani1995/MetroMetricsMavericks",
-      },
-    ],
-  },
-  {
-    id: "infra-platforms",
-    label: "Infrastructure & Platforms",
-    description: "Real-time systems, telemetry pipelines, and self-hostable platforms.",
-    projects: [
-      {
-        title: "AIOM — Real-Time Infrastructure Monitoring",
-        image: aiomImg,
-        year: "2026",
-        takeaway:
-          "Self-hostable monitoring SaaS — no inbound firewall rules required.",
-        metrics: [
-          { value: "~78K", label: "lines of code" },
-          { value: "30s", label: "alert eval cadence" },
-          { value: "3 OS", label: "agent distributables" },
-        ],
-        blurb:
-          "Hub + Agent observability platform pushing metrics over MQTT with rule-based alerting and a drag-and-drop dashboard builder.",
-        highlights: [
-          "Lightweight Python agents push telemetry over MQTT to a central hub with HMAC-SHA256 payload signing.",
-          "TimescaleDB hypertables with multi-window aggregation, fanned out to live dashboards over WebSockets.",
-          "Celery-driven alerting engine (threshold, service-down, agent-offline, URL-down) with Slack/email/webhook routing.",
-        ],
-        tech: ["Python", "FastAPI", "MQTT", "TimescaleDB", "Celery", "WebSockets", "React", "Redis", "Docker"],
-        href: "https://github.com/tago893",
+        href: "https://github.com/AashrithaKondaveetii/DE_Project_Pipeline_Pioneers",
       },
     ],
   },
   {
     id: "web-apis",
     label: "Web & APIs",
-    description: "Backend services and full-stack apps shipped to real users.",
+    description: "Backend services and educational platforms shipped to real users.",
     projects: [
       {
         title: "APIVerse",
@@ -240,45 +185,7 @@ const categories: { id: string; label: string; description: string; projects: Pr
           "Improved iteration speed 25% through faster Cloud Run redeploys.",
         ],
         tech: ["Python", "Flask", "FastAPI", "Google Cloud", "Docker", "OAuth"],
-        href: "https://github.com/sriramnurani1995/APIverse",
-      },
-      {
-        title: "Abnormal File Hub",
-        image: fileHubImg,
-        year: "2025",
-        takeaway:
-          "Dedup-aware file storage that catches duplicate uploads before they hit disk.",
-        metrics: [
-          { value: "Dedup", label: "by content hash" },
-          { value: "REST", label: "clean API" },
-        ],
-        blurb:
-          "Full-stack file management service with content-hash deduplication and a React front-end.",
-        highlights: [
-          "Backend computes content hashes server-side to skip storing duplicate blobs.",
-          "Clean Django REST API consumed by a React UI for upload, listing, and search.",
-        ],
-        tech: ["Django", "DRF", "React", "PostgreSQL", "Docker"],
-        href: "https://github.com/tago893/abnormal-file-hub-main",
-      },
-      {
-        title: "Movie Booking Application",
-        image: movieImg,
-        year: "2024",
-        takeaway:
-          "End-to-end ticketing flow with seat selection, holds, and confirmations.",
-        metrics: [
-          { value: "Seat-map", label: "live state" },
-          { value: "Auth", label: "user accounts" },
-        ],
-        blurb:
-          "Full-stack movie ticket booking app covering browsing, seat selection, and checkout.",
-        highlights: [
-          "Modeled showtimes, seats, and bookings with concurrency-safe hold logic.",
-          "Auth-gated checkout flow with booking history per user.",
-        ],
-        tech: ["Python", "Django", "PostgreSQL", "React"],
-        href: "https://github.com/tago893/movie_booking_application",
+        href: "https://github.com/sriramnurani1995/APIverse/tree/main",
       },
     ],
   },
