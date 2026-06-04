@@ -1,5 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Code2, Server, Network, Database, Cloud } from "lucide-react";
+import {
+  Code2, Server, Network, Database, Cloud,
+  Coffee, Terminal, Table, Zap, Beaker,
+  Globe, Boxes, Activity, MessageSquare, MessageCircle,
+  Search, GitBranch, Wrench, Box, Hexagon, Clock,
+} from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getAllPosts, formatDate } from "@/lib/posts";
@@ -7,6 +12,7 @@ import vulnImg from "@/assets/vuln-analyzer.jpg";
 import mcpImg from "@/assets/mcp-agent.jpg";
 import ragImg from "@/assets/rag-assistant.jpg";
 import resumePdf from "@/assets/resume.pdf.asset.json";
+import type { LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -61,6 +67,39 @@ const skillGroups: { label: string; icon: typeof Code2; items: string[] }[] = [
   },
 ];
 
+const skillIconMap: Record<string, LucideIcon> = {
+  "Java": Coffee,
+  "Python": Code2,
+  "SQL": Table,
+  "JavaScript": Code2,
+  "TypeScript": Code2,
+  "Bash": Terminal,
+  "Spring Boot": Server,
+  "Django": Box,
+  "FastAPI": Zap,
+  "Flask": Beaker,
+  "REST APIs": Globe,
+  "Microservices": Boxes,
+  "Apache Kafka": Activity,
+  "AWS SQS": MessageSquare,
+  "GCP Pub/Sub": MessageCircle,
+  "RabbitMQ": MessageSquare,
+  "Event-driven": Activity,
+  "Async": Clock,
+  "PostgreSQL": Database,
+  "MySQL": Database,
+  "Redis": Database,
+  "Elasticsearch": Search,
+  "Milvus": Search,
+  "MongoDB": Database,
+  "AWS (EC2 / S3 / RDS / SQS)": Cloud,
+  "GCP Cloud Run": Cloud,
+  "Docker": Box,
+  "Kubernetes": Hexagon,
+  "GitHub Actions": GitBranch,
+  "Jenkins": Wrench,
+};
+
 const experience = [
   {
     role: "Software Engineer",
@@ -98,7 +137,7 @@ const experience = [
 
 
 function HomePage() {
-  const posts = getAllPosts().slice(0, 3);
+  const posts = getAllPosts().filter((p) => !p.tags.includes("draft")).slice(0, 3);
 
   return (
     <div className="bg-background text-zinc-400 font-body antialiased">
@@ -370,14 +409,18 @@ function HomePage() {
                             {group.label}
                           </p>
                           <div className="flex flex-wrap gap-2">
-                            {group.items.map((s) => (
-                              <span
-                                key={s}
-                                className="px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
-                              >
-                                {s}
-                              </span>
-                            ))}
+                            {group.items.map((s) => {
+                              const SkillIcon = skillIconMap[s] ?? Code2;
+                              return (
+                                <span
+                                  key={s}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
+                                >
+                                  <SkillIcon className="size-3.5 text-zinc-500" />
+                                  {s}
+                                </span>
+                              );
+                            })}
                           </div>
                         </div>
                       );
