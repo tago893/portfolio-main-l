@@ -21,13 +21,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Software engineer with 1+ year of experience building scalable backend services, data platforms, and AI-enabled applications.",
+          "Backend engineer building scalable services, data platforms, and AI-enabled systems. MS CS from Portland State.",
       },
       { property: "og:title", content: "Varun Chikkala — Software Engineer" },
       {
         property: "og:description",
         content:
-          "Backend, data platforms, and AI projects from a Portland State MS CS grad based in Hayward, CA.",
+          "Backend engineer. Data platforms, vector search, and AI systems from a Portland State MS CS grad based in Hayward, CA.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -112,8 +112,8 @@ const experience: {
     org: "Live Music Project",
     period: "Jan 2026 — Present",
     bullets: [
-      "Backend developer on the event and campaign operations platform, partnering with stakeholders to harden analytics reliability and campaign workflows.",
-      "Improving access control for orchestra managers, admins, and internal users across event management and reporting surfaces.",
+      "Own backend services for event and campaign operations, hardening analytics reliability and campaign execution pipelines.",
+      "Design and implement access control for orchestra managers, admins, and internal users across event management and reporting surfaces.",
     ],
     tech: ["Python", "Django", "PostgreSQL", "Redis", "REST APIs"],
   },
@@ -145,9 +145,9 @@ const experience: {
     org: "Aham Learning",
     period: "Jan 2023 — Jun 2023",
     bullets: [
-      "Built responsive dashboards for students and tutors using JavaScript, PHP, Laravel, MySQL, and Neo4j.",
-      "Prototyped Neo4j graph models for 100+ course relationships, mapping prerequisites and learning paths.",
-      "Performed functional and UI testing across 5+ dashboard workflows, surfacing layout and navigation regressions.",
+      "Built student and tutor dashboards end-to-end with JavaScript, PHP, Laravel, MySQL, and Neo4j.",
+      "Modeled 100+ course relationships in Neo4j, enabling prerequisite and learning-path queries.",
+      "Owned QA for 5+ dashboard workflows, catching layout and navigation regressions before release.",
     ],
     tech: ["JavaScript", "MySQL", "MongoDB"],
   },
@@ -172,12 +172,13 @@ function HomePage() {
                 Varun Chikkala · Hayward, CA
               </span>
               <h1 className="font-display text-5xl md:text-7xl font-semibold text-zinc-100 leading-tight mb-8 text-balance">
-                Backend & cloud systems for search, retrieval, and AI-enabled products.
+                Backend systems at scale. Search, retrieval, and AI infrastructure.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                Software engineer focused on backend services, RAG pipelines, vector
-                databases, and LLM orchestration. MS in Computer Science from Portland
-                State University. Comfortable across Python, Java, AWS, and GCP.
+                I build backend services, RAG pipelines, and LLM-orchestrated systems.
+                Recent work: 2.8M-paper vector search pipeline with 66% latency reduction,
+                multi-provider LLM gateway, and event-driven data platforms. MS in
+                Computer Science from Portland State University.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
