@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Backend, data platforms, and AI projects from a Portland State MS CS grad based in Seattle.",
+          "Backend, data platforms, and AI projects from a Portland State MS CS grad based in Hayward, CA.",
       },
       { property: "og:url", content: "/" },
     ],
