@@ -507,33 +507,6 @@ function HomePage() {
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-zinc-500">No posts yet. Check back soon.</p>
             </div>
-              <div className="divide-y divide-zinc-900/60">
-                {posts.map((post) => (
-                  <article key={post.slug} className="py-8 group">
-                    <Link
-                      to="/blog/$slug"
-                      params={{ slug: post.slug }}
-                      className="grid md:grid-cols-12 gap-8 items-center"
-                    >
-                      <time className="md:col-span-2 text-sm text-zinc-600">
-                        {formatDate(post.date)}
-                      </time>
-                      <div className="md:col-span-8">
-                        <h3 className="text-xl font-display font-semibold text-zinc-200 group-hover:text-accent transition-colors">
-                          {post.title}
-                        </h3>
-                        <p className="mt-2 text-sm text-zinc-500 line-clamp-1">{post.excerpt}</p>
-                      </div>
-                      <div className="md:col-span-2 md:text-right">
-                        <span className="text-xs uppercase tracking-widest text-zinc-700">
-                          {post.readTime}
-                        </span>
-                      </div>
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            )}
           </div>
         </section>
       </main>
