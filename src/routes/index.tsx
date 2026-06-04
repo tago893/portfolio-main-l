@@ -295,7 +295,7 @@ function HomePage() {
                   <div className="p-5 bg-zinc-900/40 rounded-lg ring-1 ring-zinc-900">
                     <p className="text-sm font-medium text-zinc-100">Based in</p>
                     <p className="mt-3 text-sm text-zinc-500">
-                      Seattle, WA · open to remote and on-site SDE roles.
+                      Hayward, CA · open to remote and on-site SDE roles.
                     </p>
                   </div>
                   <a
