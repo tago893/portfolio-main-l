@@ -77,19 +77,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Varun Chikkala — Engineer & Builder" },
+      {
+        name: "description",
+        content:
+          "Portfolio and writing by Varun Chikkala — MS in Computer Science from Portland State, building full-stack and machine learning systems.",
+      },
+      { name: "author", content: "Varun Chikkala" },
+      { property: "og:title", content: "Varun Chikkala — Engineer & Builder" },
+      {
+        property: "og:description",
+        content: "Portfolio and writing on engineering, ML, and the pursuit of clean code.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:site_name", content: "Varun Chikkala" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Space+Grotesk:wght@500;600;700&display=swap",
       },
     ],
   }),
