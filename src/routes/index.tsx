@@ -89,24 +89,8 @@ const experience = [
   },
 ];
 
-const sideProjects = [
-  {
-    title: "MCP DevOps PR Agent",
-    image: mcpImg,
-    description:
-      "An AI-assisted developer productivity tool that analyzes GitHub PR events, failed CI runs, and security findings through a FastAPI webhook service. Custom MCP servers expose Git diffs, file updates, and Actions logs as structured tools for LLM-driven automation.",
-    tech: ["Python", "FastAPI", "MCP", "GitHub Actions", "Gemini", "Bandit"],
-    href: "https://github.com/varunchikkala",
-  },
-  {
-    title: "AI Conversational Assistant",
-    image: ragImg,
-    description:
-      "Researcher-facing RAG platform indexing 2.8M+ paper embeddings in Milvus. A chunked ingestion pipeline cut corpus indexing from 12 hours to under 4, with an LLM abstraction layer across Gemini, OpenAI, and Hugging Face.",
-    tech: ["Python", "Milvus", "Azure AI Search", "Gemini", "OpenAI"],
-    href: "https://github.com/varunchikkala",
-  },
-];
+
+
 
 function HomePage() {
   const posts = getAllPosts().slice(0, 3);
