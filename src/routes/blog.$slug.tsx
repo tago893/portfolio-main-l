@@ -87,7 +87,7 @@ function PostPage() {
 
           {post.tags.length > 0 && (
             <div className="mt-16 pt-8 border-t border-zinc-900/60 flex flex-wrap gap-2">
-              {post.tags.map((t) => (
+              {post.tags.map((t: string) => (
                 <span
                   key={t}
                   className="px-2.5 py-1 bg-zinc-900 ring-1 ring-zinc-800 rounded text-xs text-zinc-400"
