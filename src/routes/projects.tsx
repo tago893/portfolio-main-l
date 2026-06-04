@@ -240,93 +240,61 @@ function ProjectsPage() {
                   {cat.projects.map((p) => (
                     <article
                       key={p.title}
-                      className="group rounded-lg ring-1 ring-zinc-900 bg-zinc-950/40 p-5 hover:ring-accent/40 transition-all flex flex-col"
+                      className="group rounded-lg ring-1 ring-zinc-900 bg-zinc-950/40 overflow-hidden hover:ring-accent/40 transition-all flex flex-col"
                     >
-                      <div className="flex items-start gap-4 mb-3">
-                        <a
-                          href={p.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="shrink-0"
-                        >
-                          <img
-                            src={p.image}
-                            alt={`${p.title} preview`}
-                            width={640}
-                            height={480}
-                            loading="lazy"
-                            className="size-16 object-cover rounded-md ring-1 ring-zinc-900"
-                          />
-                        </a>
-                        <div className="min-w-0 flex-1">
-                          <p className="text-[10px] font-medium text-zinc-600 uppercase tracking-[0.18em] mb-1">
-                            {p.year}
-                          </p>
-                          <h3 className="font-display text-base font-semibold text-zinc-100 leading-snug text-balance">
-                            {p.title}
-                          </h3>
-                        </div>
-                      </div>
-                      <p className="text-sm leading-relaxed text-zinc-300 mb-4 text-pretty">
-                        {p.takeaway}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {p.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="px-2 py-0.5 bg-zinc-900 ring-1 ring-zinc-800 rounded text-[10px] text-zinc-400"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                      <details className="mt-auto group/details">
-                        <summary className="cursor-pointer text-[11px] uppercase tracking-[0.18em] text-zinc-500 hover:text-zinc-300 transition-colors list-none flex items-center gap-2">
-                          <span className="transition-transform group-open/details:rotate-90">›</span>
-                          More detail
-                        </summary>
-                        <p className="text-xs leading-relaxed text-zinc-400 mt-3">{p.blurb}</p>
-                        <ul className="space-y-1.5 mt-2">
-                          {p.highlights.map((h) => (
-                            <li
-                              key={h}
-                              className="text-xs leading-relaxed text-zinc-400 pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-zinc-700"
-                            >
+                      <a href={p.href} target="_blank" rel="noreferrer" className="block">
+                        <img
+                          src={p.image}
+                          alt={`${p.title} preview`}
+                          width={1280}
+                          height={720}
+                          loading="lazy"
+                          className="w-full aspect-[16/9] object-cover"
+                        />
+                      </a>
+                      <div className="p-5 flex flex-col flex-1">
+                        <h3 className="font-display text-lg font-semibold text-zinc-100 mb-3">
+                          {p.title}
+                        </h3>
+                        <p className="text-sm italic text-zinc-400 mb-4 text-pretty">
+                          {p.takeaway}
+                        </p>
+                        <p className="text-sm text-zinc-300 mb-4">
+                          <span className="font-semibold text-zinc-100">Technologies: </span>
+                          <span className="text-zinc-400">{p.tech.join(", ")}</span>
+                        </p>
+                        <ul className="space-y-1.5 mb-5 list-disc pl-5 marker:text-zinc-600">
+                          {p.highlights.slice(0, 2).map((h, i) => (
+                            <li key={h} className="text-sm leading-relaxed text-zinc-400">
+                              {i === 0 && (
+                                <span className="font-semibold text-accent">Impact: </span>
+                              )}
                               {h}
                             </li>
                           ))}
                         </ul>
-                        <dl className="grid grid-cols-3 gap-2 mt-3">
-                          {p.metrics.map((m) => (
-                            <div
-                              key={m.label}
-                              className="rounded bg-zinc-900/60 ring-1 ring-zinc-900 px-2 py-2"
-                            >
-                              <dt className="text-[9px] uppercase tracking-[0.14em] text-zinc-500 mb-0.5">
-                                {m.label}
-                              </dt>
-                              <dd className="font-display text-sm font-semibold text-zinc-100 leading-none">
-                                {m.value}
-                              </dd>
-                            </div>
-                          ))}
-                        </dl>
-                      </details>
-                      <a
-                        href={p.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-300 hover:text-accent transition-colors mt-3"
-                      >
-                        GitHub
-                        <span className="transition-transform group-hover:translate-x-0.5">→</span>
-                      </a>
+                        <div className="flex items-center gap-3 mt-auto">
+                          <a
+                            href={p.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-sm font-medium text-accent hover:underline underline-offset-4"
+                          >
+                            GitHub
+                          </a>
+                          <a
+                            href={p.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-sm font-medium bg-accent text-zinc-100 px-3 py-1.5 rounded ring-1 ring-accent hover:bg-accent/90 transition-all"
+                          >
+                            Demo
+                          </a>
+                        </div>
+                      </div>
                     </article>
                   ))}
                 </div>
-              </section>
-            ))}
-          </div>
         </div>
 
         {/* Bottom CTA */}
