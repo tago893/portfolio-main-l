@@ -361,23 +361,27 @@ function HomePage() {
                     Skills & Tools
                   </h3>
                   <div className="space-y-6">
-                    {skillGroups.map((group) => (
-                      <div key={group.label}>
-                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 mb-3">
-                          {group.label}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {group.items.map((s) => (
-                            <span
-                              key={s}
-                              className="px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
-                            >
-                              {s}
-                            </span>
-                          ))}
+                    {skillGroups.map((group) => {
+                      const Icon = group.icon;
+                      return (
+                        <div key={group.label}>
+                          <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 mb-3">
+                            <Icon className="size-4 text-accent" />
+                            {group.label}
+                          </p>
+                          <div className="flex flex-wrap gap-2">
+                            {group.items.map((s) => (
+                              <span
+                                key={s}
+                                className="px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
+                              >
+                                {s}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
