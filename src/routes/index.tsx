@@ -133,8 +133,7 @@ function HomePage() {
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
-                  to="/"
-                  hash="projects"
+                  to="/projects"
                   className="bg-accent text-zinc-100 py-2.5 pr-5 pl-4 rounded-md ring-1 ring-accent flex items-center gap-2 text-sm font-medium hover:bg-accent/90 transition-all"
                 >
                   <span className="size-4 shrink-0">→</span>
@@ -161,57 +160,80 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Featured Project: Vulnerability Analyzer */}
-        <section id="projects" className="py-24 bg-zinc-950/30 border-y border-zinc-900/60">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-7">
-                <img
-                  src={vulnImg}
-                  alt="Automated Vulnerability & Malware Analyzer — visualization"
-                  width={1280}
-                  height={960}
-                  className="w-full aspect-[4/3] object-cover rounded-xl ring-1 ring-zinc-900"
-                />
-              </div>
-              <div className="lg:col-span-5">
-                <span className="text-accent font-display text-sm font-semibold tracking-widest uppercase mb-4 block">
-                  Featured Case Study
+        {/* Projects carousel preview */}
+        <section id="projects" className="py-24 bg-zinc-950/30 border-y border-zinc-900/60 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 mb-10">
+            <div className="flex items-end justify-between gap-6 flex-wrap">
+              <div>
+                <span className="text-accent font-display text-sm font-semibold tracking-widest uppercase mb-3 block">
+                  Selected Work
                 </span>
-                <h2 className="font-display text-4xl font-semibold text-zinc-100 mb-6 text-balance">
-                  Automated Vulnerability & Malware Analyzer
+                <h2 className="font-display text-4xl font-semibold text-zinc-100 text-balance">
+                  Things I've shipped lately.
                 </h2>
-                <p className="text-base leading-relaxed text-pretty max-w-[48ch] mb-6">
-                  A static application security testing tool that parses Python ASTs to detect
-                  command injection, path traversal, hardcoded credentials, and insecure
-                  deserialization — paired with an LLM-based malware engine that scores source code
-                  for obfuscation, unauthorized network calls, and data leakage risks.
-                </p>
-                <p className="text-sm leading-relaxed text-zinc-500 max-w-[48ch] mb-8">
-                  <span className="text-zinc-300">Output —</span> machine-readable JSON reports
-                  with vulnerability types, severity, vulnerable snippets, and remediation steps.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {["Python", "LangChain", "AST", "Gemini", "JSON"].map((t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 bg-zinc-900 ring-1 ring-zinc-800 rounded-full text-xs"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href="https://github.com/varunchikkala"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-zinc-100 font-medium hover:text-accent transition-colors group"
-                >
-                  View on GitHub
-                  <span className="size-4 transition-transform group-hover:translate-x-1">→</span>
-                </a>
               </div>
+              <Link
+                to="/projects"
+                className="text-sm font-medium text-accent hover:underline decoration-2 underline-offset-4"
+              >
+                Browse all projects →
+              </Link>
             </div>
+          </div>
+
+          <div
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-6 max-w-7xl mx-auto scroll-px-6"
+            style={{ scrollbarWidth: "thin" }}
+          >
+            {[
+              {
+                title: "Automated Vulnerability & Malware Analyzer",
+                img: vulnImg,
+                tag: "AI · Security",
+                blurb:
+                  "Python AST-driven SAST with an LLM malware engine emitting structured JSON reports.",
+              },
+              {
+                title: "MCP DevOps PR Agent",
+                img: mcpImg,
+                tag: "AI · DevTools",
+                blurb:
+                  "FastAPI webhook + MCP servers that turn GitHub PRs and CI logs into LLM-actionable tools.",
+              },
+              {
+                title: "AI Conversational Assistant",
+                img: ragImg,
+                tag: "RAG · Vector Search",
+                blurb:
+                  "2.8M paper embeddings in Milvus; ingestion cut from 12h to under 4h per batch.",
+              },
+            ].map((p) => (
+              <Link
+                key={p.title}
+                to="/projects"
+                className="snap-start shrink-0 w-[88vw] sm:w-[420px] group"
+              >
+                <div className="rounded-xl ring-1 ring-zinc-900 overflow-hidden bg-zinc-950 group-hover:ring-accent/40 transition-all">
+                  <img
+                    src={p.img}
+                    alt={`${p.title} preview`}
+                    width={1280}
+                    height={960}
+                    loading="lazy"
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                  <div className="p-5">
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent mb-3">
+                      {p.tag}
+                    </p>
+                    <h3 className="font-display text-lg font-semibold text-zinc-100 mb-2 group-hover:text-accent transition-colors">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-zinc-500 text-pretty">{p.blurb}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
 
@@ -327,47 +349,21 @@ function HomePage() {
                   </div>
                 </div>
 
-                {/* Other projects */}
+                {/* Projects CTA */}
                 <div>
-                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
-                    More Work
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-4">
+                    Projects
                   </h3>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    {sideProjects.map((p) => (
-                      <a
-                        key={p.title}
-                        href={p.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group block"
-                      >
-                        <img
-                          src={p.image}
-                          alt={`${p.title} preview`}
-                          width={1280}
-                          height={800}
-                          loading="lazy"
-                          className="w-full aspect-video object-cover rounded-xl ring-1 ring-zinc-900 mb-6 group-hover:ring-accent/40 transition-all"
-                        />
-                        <h5 className="text-zinc-100 font-display font-semibold text-lg mb-2 group-hover:text-accent transition-colors">
-                          {p.title}
-                        </h5>
-                        <p className="text-sm leading-relaxed text-pretty text-zinc-500 mb-4">
-                          {p.description}
-                        </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {p.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="px-2 py-0.5 bg-zinc-900 ring-1 ring-zinc-800 rounded text-[11px] text-zinc-400"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      </a>
-                    ))}
-                  </div>
+                  <p className="max-w-[56ch] mb-6 text-zinc-400">
+                    The full catalog — grouped by AI &amp; developer tools, data &amp; ML, and web
+                    &amp; APIs — lives on a dedicated page.
+                  </p>
+                  <Link
+                    to="/projects"
+                    className="inline-flex items-center gap-2 bg-accent text-zinc-100 px-5 py-2.5 rounded-md ring-1 ring-accent text-sm font-medium hover:bg-accent/90 transition-all"
+                  >
+                    Browse all projects →
+                  </Link>
                 </div>
 
                 {/* Skills */}
