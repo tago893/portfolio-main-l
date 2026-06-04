@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Backend, data platforms, and AI projects from a Portland State MS CS grad based in Seattle.",
+          "Backend, data platforms, and AI projects from a Portland State MS CS grad based in Hayward, CA.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -110,35 +110,35 @@ const experience: {
   {
     role: "Software Engineer",
     org: "Live Music Project",
-    period: "Apr 2025 — Present",
+    period: "Jan 2026 — Present",
     bullets: [
-      "Designed a Redis-backed data layer that stabilized KPI reporting and eliminated 70% of redundant aggregation queries.",
-      "Architected an automated ETL pipeline for regional email campaigns with SendGrid + SPF/DKIM, lifting deliverability to 85%.",
-      "Implemented Django RBAC across 3 user tiers, securing event management, campaign operations, and analytics access.",
+      "Backend developer on the event and campaign operations platform, partnering with stakeholders to harden analytics reliability and campaign workflows.",
+      "Improving access control for orchestra managers, admins, and internal users across event management and reporting surfaces.",
     ],
     tech: ["Python", "Django", "PostgreSQL", "Redis", "REST APIs"],
   },
   {
-    role: "Graduate Student Researcher",
+    role: "Software Engineer",
     org: "Portland State University",
-    period: "Apr 2025 — Aug 2025",
+    period: "Apr 2025 — Present",
     bullets: [
-      "Built an ETL transit pipeline processing 350K+ daily GPS and stop-event records from Portland's public transit system.",
-      "Transformed raw bus location data into query-ready datasets by fixing route IDs and computing vehicle speeds.",
-      "Designed an NL-to-SQL interface with prompt sanitization so researchers could query transit data in plain English.",
+      "Built a RAG pipeline over 2.8M+ ArXiv papers using SPECTER embeddings and Milvus vector search, cutting query latency by 66%.",
+      "Developed a flexible LLM service layer supporting Gemini, OpenAI, and Mistral to swap providers and improve response reliability.",
+      "Designed role-based access workflows for admins, researchers, and students for controlled access to research features.",
+      "Built a batch ingestion pipeline processing 80K papers per batch, improving large-scale search readiness.",
     ],
-    tech: ["Python", "PostgreSQL", "GCP Cloud Run", "SQL"],
+    tech: ["Python", "FastAPI", "Milvus", "PostgreSQL", "GCP Pub/Sub"],
   },
   {
-    role: "Software Engineer Intern",
-    org: "Aham Learning",
-    period: "Jan 2023 — Jun 2023",
+    role: "Software Engineer (IT Specialist)",
+    org: "The Computer Action Team @ PSU",
+    period: "Sep 2023 — Feb 2025",
     bullets: [
-      "Built responsive dashboards for students and tutors using JavaScript, PHP, Laravel, MySQL, and Neo4j.",
-      "Prototyped Neo4j graph models for 100+ course relationships, mapping prerequisites and learning paths.",
-      "Performed functional and UI testing across 5+ dashboard workflows, surfacing layout and navigation regressions.",
+      "Supported Linux and Windows systems across the College of Engineering — troubleshooting lab machines, software access, and configuration issues.",
+      "Collaborated with IT staff and faculty to resolve tickets, document recurring issues, and improve reliability of technical workflows.",
+      "Built hands-on experience with scripting, systems administration, networking, and DevOps practices through CAT's technical training.",
     ],
-    tech: ["JavaScript", "MySQL", "MongoDB"],
+    tech: ["Linux", "Bash", "Docker"],
   },
 ];
 
@@ -158,15 +158,15 @@ function HomePage() {
           <div className="max-w-7xl mx-auto">
             <header className="max-w-4xl">
               <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent mb-6">
-                Varun Chikkala · Seattle, WA
+                Varun Chikkala · Hayward, CA
               </span>
               <h1 className="font-display text-5xl md:text-7xl font-semibold text-zinc-100 leading-tight mb-8 text-balance">
-                Building scalable backends, data platforms, and AI-enabled products.
+                Backend & cloud systems for search, retrieval, and AI-enabled products.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                Software engineer with 1+ year of experience shipping production systems in Java
-                and Python. MS in Computer Science from Portland State University. Strong in REST
-                APIs, microservices, SQL/NoSQL, and cloud-native development.
+                Software engineer focused on backend services, RAG pipelines, vector
+                databases, and LLM orchestration. MS in Computer Science from Portland
+                State University. Comfortable across Python, Java, AWS, and GCP.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
@@ -295,7 +295,7 @@ function HomePage() {
                   <div className="p-5 bg-zinc-900/40 rounded-lg ring-1 ring-zinc-900">
                     <p className="text-sm font-medium text-zinc-100">Based in</p>
                     <p className="mt-3 text-sm text-zinc-500">
-                      Seattle, WA · open to remote and on-site SDE roles.
+                      Hayward, CA · open to remote and on-site SDE roles.
                     </p>
                   </div>
                   <a
