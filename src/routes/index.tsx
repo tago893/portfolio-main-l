@@ -504,67 +504,9 @@ function HomePage() {
               )}
             </div>
 
-            {posts.length === 0 ? (
-              <div className="grid md:grid-cols-3 gap-4">
-                {[
-                  {
-                    eyebrow: "RAG",
-                    title: "Cutting RAG latency 66% on 2.8M papers",
-                    blurb: "Embedding choice, Milvus index tuning, and the small wins that compounded.",
-                  },
-                  {
-                    eyebrow: "LLM Infra",
-                    title: "A provider-agnostic LLM service layer",
-                    blurb: "Why swappable providers (Gemini, OpenAI, Mistral) beat a single SDK lock-in.",
-                  },
-                  {
-                    eyebrow: "Data Pipelines",
-                    title: "Ingesting 80K papers per batch, reliably",
-                    blurb: "Pub/Sub, idempotency, and the boring parts that keep batch jobs honest.",
-                  },
-                ].map((t) => (
-                  <div
-                    key={t.title}
-                    className="p-6 rounded-xl ring-1 ring-zinc-900 bg-zinc-950/60 hover:ring-accent/30 transition-colors"
-                  >
-                    <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent mb-3">
-                      {t.eyebrow} · Draft
-                    </p>
-                    <h3 className="font-display text-lg font-semibold text-zinc-100 mb-2 text-pretty">
-                      {t.title}
-                    </h3>
-                    <p className="text-sm text-zinc-500 text-pretty">{t.blurb}</p>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="divide-y divide-zinc-900/60">
-                {posts.map((post) => (
-                  <article key={post.slug} className="py-8 group">
-                    <Link
-                      to="/blog/$slug"
-                      params={{ slug: post.slug }}
-                      className="grid md:grid-cols-12 gap-8 items-center"
-                    >
-                      <time className="md:col-span-2 text-sm text-zinc-600">
-                        {formatDate(post.date)}
-                      </time>
-                      <div className="md:col-span-8">
-                        <h3 className="text-xl font-display font-semibold text-zinc-200 group-hover:text-accent transition-colors">
-                          {post.title}
-                        </h3>
-                        <p className="mt-2 text-sm text-zinc-500 line-clamp-1">{post.excerpt}</p>
-                      </div>
-                      <div className="md:col-span-2 md:text-right">
-                        <span className="text-xs uppercase tracking-widest text-zinc-700">
-                          {post.readTime}
-                        </span>
-                      </div>
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            )}
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-zinc-500">No posts yet. Check back soon.</p>
+            </div>
           </div>
         </section>
       </main>
