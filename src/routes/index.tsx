@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Backend engineer building scalable services, data platforms, and AI-enabled systems. MS CS from Portland State.",
+          "Junior backend engineer building services, data platforms, and AI-enabled systems. MS CS from Portland State.",
       },
       { property: "og:title", content: "Varun Chikkala — Software Engineer" },
       {
@@ -112,8 +112,8 @@ const experience: {
     org: "Live Music Project",
     period: "Jan 2026 — Present",
     bullets: [
-      "Own backend services for event and campaign operations, hardening analytics reliability and campaign execution pipelines.",
-      "Design and implement access control for orchestra managers, admins, and internal users across event management and reporting surfaces.",
+      "Building backend services for event and campaign operations, hardening analytics reliability and campaign execution pipelines.",
+      "Implementing access control for orchestra managers, admins, and internal users across event management and reporting surfaces.",
     ],
     tech: ["Python", "Django", "PostgreSQL", "Redis", "REST APIs"],
   },
@@ -124,7 +124,7 @@ const experience: {
     bullets: [
       "Built a RAG pipeline over 2.8M+ ArXiv papers using SPECTER embeddings and Milvus vector search, cutting query latency by 66%.",
       "Developed a flexible LLM service layer supporting Gemini, OpenAI, and Mistral to swap providers and improve response reliability.",
-      "Designed role-based access workflows for admins, researchers, and students for controlled access to research features.",
+      "Implemented role-based access workflows for admins, researchers, and students for controlled access to research features.",
       "Built a batch ingestion pipeline processing 80K papers per batch, improving large-scale search readiness.",
     ],
     tech: ["Python", "FastAPI", "Milvus", "PostgreSQL", "GCP Pub/Sub"],
