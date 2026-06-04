@@ -30,22 +30,26 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const skillGroups: { label: string; items: string[] }[] = [
-  { label: "Languages", items: ["Java", "Python", "SQL", "JavaScript", "TypeScript", "Bash"] },
+const skillGroups: { label: string; icon: typeof Code2; items: string[] }[] = [
+  { label: "Languages", icon: Code2, items: ["Java", "Python", "SQL", "JavaScript", "TypeScript", "Bash"] },
   {
     label: "Backend",
+    icon: Server,
     items: ["Spring Boot", "Django", "FastAPI", "Flask", "REST APIs", "Microservices"],
   },
   {
     label: "Data & Messaging",
+    icon: Network,
     items: ["Apache Kafka", "AWS SQS", "GCP Pub/Sub", "RabbitMQ", "Event-driven", "Async"],
   },
   {
     label: "Databases & Search",
+    icon: Database,
     items: ["PostgreSQL", "MySQL", "Redis", "Elasticsearch", "Milvus", "MongoDB"],
   },
   {
     label: "Cloud & DevOps",
+    icon: Cloud,
     items: [
       "AWS (EC2 / S3 / RDS / SQS)",
       "GCP Cloud Run",
