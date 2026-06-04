@@ -1,0 +1,293 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteNav } from "@/components/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter";
+import vulnImg from "@/assets/vuln-analyzer.jpg";
+import mcpImg from "@/assets/mcp-agent.jpg";
+import ragImg from "@/assets/rag-assistant.jpg";
+import apiverseImg from "@/assets/apiverse.jpg";
+import trimetImg from "@/assets/trimet.jpg";
+import codedocImg from "@/assets/codedoc.jpg";
+
+export const Route = createFileRoute("/projects")({
+  head: () => ({
+    meta: [
+      { title: "Projects — Varun Chikkala" },
+      {
+        name: "description",
+        content:
+          "Selected engineering projects across AI & developer tools, data platforms, and web & APIs.",
+      },
+      { property: "og:title", content: "Projects — Varun Chikkala" },
+      {
+        property: "og:description",
+        content:
+          "AI security tooling, RAG systems, transit data pipelines, and API platforms by Varun Chikkala.",
+      },
+      { property: "og:url", content: "/projects" },
+    ],
+    links: [{ rel: "canonical", href: "/projects" }],
+  }),
+  component: ProjectsPage,
+});
+
+type Project = {
+  title: string;
+  image: string;
+  blurb: string;
+  highlights: string[];
+  tech: string[];
+  href: string;
+  year: string;
+};
+
+const categories: { id: string; label: string; description: string; projects: Project[] }[] = [
+  {
+    id: "ai-devtools",
+    label: "AI & Developer Tools",
+    description: "LLM-powered tooling for security, code review, and developer productivity.",
+    projects: [
+      {
+        title: "Automated Vulnerability & Malware Analyzer",
+        image: vulnImg,
+        year: "2025",
+        blurb:
+          "A SAST tool that parses Python ASTs and pairs them with an LLM-driven malware scorer.",
+        highlights: [
+          "Detects command injection, path traversal, hardcoded credentials, and insecure deserialization.",
+          "LLM engine flags obfuscation, unauthorized network calls, and data leakage risks.",
+          "Emits machine-readable JSON with severity, vulnerable snippets, and remediation steps.",
+        ],
+        tech: ["Python", "LangChain", "AST", "Gemini", "JSON"],
+        href: "https://github.com/varunchikkala",
+      },
+      {
+        title: "MCP DevOps PR Agent",
+        image: mcpImg,
+        year: "2025",
+        blurb:
+          "FastAPI webhook service that analyzes GitHub PRs, failed CI runs, and security findings.",
+        highlights: [
+          "Custom MCP Repo & CI servers expose diffs, file updates, and Actions logs as LLM tools.",
+          "Bandit + Flake8 + docstring checks integrated into the review loop.",
+          "Exponential backoff and staggered execution for reliable automation.",
+        ],
+        tech: ["Python", "FastAPI", "MCP", "GitHub Actions", "Gemini", "Bandit"],
+        href: "https://github.com/varunchikkala",
+      },
+      {
+        title: "Code Documenter",
+        image: codedocImg,
+        year: "2024",
+        blurb:
+          "LLM-driven documentation generator for legacy Python and TypeScript repositories.",
+        highlights: [
+          "Cuts onboarding time by surfacing intent for undocumented modules.",
+          "Walks ASTs to anchor LLM output to real symbols, not hallucinations.",
+        ],
+        tech: ["Python", "LLMs", "AST parsing"],
+        href: "https://github.com/sriramnurani1995",
+      },
+    ],
+  },
+  {
+    id: "data-ml",
+    label: "Data & Machine Learning",
+    description: "Pipelines, vector retrieval, and analytics on real-world datasets.",
+    projects: [
+      {
+        title: "AI Conversational Assistant",
+        image: ragImg,
+        year: "2024",
+        blurb:
+          "Researcher-facing RAG platform indexing 2.8M+ paper embeddings for plain-English queries.",
+        highlights: [
+          "Chunked ingestion pipeline processed 80K papers per batch, cutting indexing from 12h to <4h.",
+          "Compared Azure AI Search semantic retrieval against Milvus vector retrieval.",
+          "LLM abstraction across Gemini, OpenAI, and Hugging Face — model calls decoupled from ranking.",
+        ],
+        tech: ["Python", "Milvus", "Azure AI Search", "Gemini", "OpenAI"],
+        href: "https://github.com/varunchikkala",
+      },
+      {
+        title: "TriMet GPS Insights",
+        image: trimetImg,
+        year: "2025",
+        blurb:
+          "ETL pipeline processing 350K+ daily GPS and stop-event records from Portland transit.",
+        highlights: [
+          "Fixed route IDs, computed vehicle speeds, and organized trip-level records for delay analysis.",
+          "NL-to-SQL interface with prompt sanitization for researchers to query in plain English.",
+          "MapboxGL clustering and route heatmaps for visual exploration.",
+        ],
+        tech: ["Python", "PostgreSQL", "Google Cloud", "MapboxGL"],
+        href: "https://github.com/AashrithaKondaveetii/DE_Project_Pipeline_Pioneers",
+      },
+    ],
+  },
+  {
+    id: "web-apis",
+    label: "Web & APIs",
+    description: "Backend services and educational platforms shipped to real users.",
+    projects: [
+      {
+        title: "APIVerse",
+        image: apiverseImg,
+        year: "2024",
+        blurb:
+          "Secure API exploration platform for Portland State students to learn real-world API workflows.",
+        highlights: [
+          "Integrated Gemini LLM endpoints via Vertex AI for live demos.",
+          "Automated API key lifecycle management with OAuth.",
+          "Improved iteration speed 25% through faster Cloud Run redeploys.",
+        ],
+        tech: ["Python", "Flask", "FastAPI", "Google Cloud", "Docker", "OAuth"],
+        href: "https://github.com/sriramnurani1995/APIverse/tree/main",
+      },
+    ],
+  },
+];
+
+function ProjectsPage() {
+  return (
+    <div className="bg-background text-zinc-400 font-body antialiased min-h-screen">
+      <SiteNav />
+
+      <main>
+        {/* Header */}
+        <section className="pt-40 pb-16 px-6">
+          <div className="max-w-7xl mx-auto">
+            <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent mb-6">
+              Projects
+            </span>
+            <h1 className="font-display text-5xl md:text-6xl font-semibold text-zinc-100 leading-tight mb-6 text-balance">
+              Things I've built.
+            </h1>
+            <p className="text-lg leading-relaxed max-w-[60ch] text-pretty mb-10">
+              A mix of production work, research projects, and side experiments — grouped by what
+              they do, not when I shipped them.
+            </p>
+            <nav className="flex flex-wrap gap-2">
+              {categories.map((c) => (
+                <a
+                  key={c.id}
+                  href={`#${c.id}`}
+                  className="px-4 py-2 rounded-full bg-zinc-900/60 ring-1 ring-zinc-900 text-sm text-zinc-300 hover:text-zinc-100 hover:ring-accent/40 transition-all"
+                >
+                  {c.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </section>
+
+        {/* Categories */}
+        <div className="px-6 pb-32">
+          <div className="max-w-7xl mx-auto space-y-24">
+            {categories.map((cat) => (
+              <section key={cat.id} id={cat.id} className="scroll-mt-24">
+                <header className="mb-12 pb-6 border-b border-zinc-900/60">
+                  <h2 className="font-display text-3xl font-semibold text-zinc-100 mb-3">
+                    {cat.label}
+                  </h2>
+                  <p className="text-zinc-500 max-w-[60ch] text-pretty">{cat.description}</p>
+                </header>
+
+                <div className="space-y-16">
+                  {cat.projects.map((p, idx) => (
+                    <article
+                      key={p.title}
+                      className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start"
+                    >
+                      <div className={`lg:col-span-6 ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
+                        <a href={p.href} target="_blank" rel="noreferrer" className="block group">
+                          <img
+                            src={p.image}
+                            alt={`${p.title} preview`}
+                            width={1280}
+                            height={960}
+                            loading="lazy"
+                            className="w-full aspect-[4/3] object-cover rounded-xl ring-1 ring-zinc-900 group-hover:ring-accent/40 transition-all"
+                          />
+                        </a>
+                      </div>
+                      <div className="lg:col-span-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <span className="text-xs font-medium text-zinc-600 uppercase tracking-[0.18em]">
+                            {p.year}
+                          </span>
+                        </div>
+                        <h3 className="font-display text-2xl md:text-3xl font-semibold text-zinc-100 mb-4 text-balance">
+                          {p.title}
+                        </h3>
+                        <p className="text-base leading-relaxed text-zinc-400 mb-6 max-w-[52ch]">
+                          {p.blurb}
+                        </p>
+                        <ul className="space-y-2 mb-6 max-w-[56ch]">
+                          {p.highlights.map((h) => (
+                            <li
+                              key={h}
+                              className="text-sm leading-relaxed text-zinc-400 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-zinc-700"
+                            >
+                              {h}
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="flex flex-wrap gap-1.5 mb-6">
+                          {p.tech.map((t) => (
+                            <span
+                              key={t}
+                              className="px-2.5 py-1 bg-zinc-900 ring-1 ring-zinc-800 rounded text-[11px] text-zinc-400"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                        <a
+                          href={p.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-medium text-zinc-100 hover:text-accent transition-colors group"
+                        >
+                          View on GitHub
+                          <span className="transition-transform group-hover:translate-x-1">→</span>
+                        </a>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <section className="py-20 px-6 border-t border-zinc-900/60 bg-zinc-950/40">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <h2 className="font-display text-2xl font-semibold text-zinc-100 mb-2">
+                Want the long version?
+              </h2>
+              <p className="text-zinc-500">Read what I'm thinking about on the blog.</p>
+            </div>
+            <div className="flex gap-3">
+              <Link
+                to="/blog"
+                className="bg-accent text-zinc-100 px-5 py-2.5 rounded-md ring-1 ring-accent text-sm font-medium hover:bg-accent/90 transition-all"
+              >
+                Read the blog →
+              </Link>
+              <Link
+                to="/"
+                className="bg-zinc-900 text-zinc-300 px-5 py-2.5 rounded-md ring-1 ring-zinc-800 text-sm font-medium hover:text-zinc-100 transition-all"
+              >
+                Back home
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
