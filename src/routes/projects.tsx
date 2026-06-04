@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
+import aiomImg from "@/assets/aiom.jpg";
+import docxImg from "@/assets/docx.jpg";
 import vulnImg from "@/assets/vuln-analyzer.jpg";
+import expenseImg from "@/assets/expense-recon.jpg";
+import inventoryImg from "@/assets/inventory-aws.jpg";
+import eventseatImg from "@/assets/eventseat.jpg";
 import mcpImg from "@/assets/mcp-agent.jpg";
-import ragImg from "@/assets/rag-assistant.jpg";
-import apiverseImg from "@/assets/apiverse.jpg";
-import trimetImg from "@/assets/trimet.jpg";
-import codedocImg from "@/assets/codedoc.jpg";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -15,13 +16,13 @@ export const Route = createFileRoute("/projects")({
       {
         name: "description",
         content:
-          "Selected engineering projects across AI & developer tools, data platforms, and web & APIs.",
+          "Selected engineering projects across infra monitoring, AI document intelligence, data engineering, AWS, and backend systems.",
       },
       { property: "og:title", content: "Projects — Varun Chikkala" },
       {
         property: "og:description",
         content:
-          "AI security tooling, RAG systems, transit data pipelines, and API platforms by Varun Chikkala.",
+          "Real-time monitoring, RAG document intelligence, security AI, AWS event-driven systems, and high-concurrency backends.",
       },
       { property: "og:url", content: "/projects" },
     ],
@@ -39,15 +40,66 @@ type Project = {
   metrics: Metric[];
   highlights: string[];
   tech: string[];
-  href: string;
+  github: string;
+  demo?: string;
   year: string;
+  status?: "shipped" | "in-progress";
 };
 
 const categories: { id: string; label: string; description: string; projects: Project[] }[] = [
   {
-    id: "ai-devtools",
-    label: "AI & Developer Tools",
-    description: "LLM-powered tooling for security, code review, and developer productivity.",
+    id: "featured",
+    label: "Featured",
+    description: "The two flagship builds — biggest scope, deepest systems work.",
+    projects: [
+      {
+        title: "AIOM — Real-Time Infra Monitoring",
+        image: aiomImg,
+        year: "2025",
+        takeaway:
+          "Hub-and-agent platform that ingests, stores, and alerts on infrastructure metrics in real time.",
+        metrics: [
+          { value: "78K", label: "lines of code" },
+          { value: "MQTT", label: "agent transport" },
+          { value: "TimescaleDB", label: "time-series store" },
+        ],
+        blurb:
+          "Self-hosted infra observability stack with custom agents, MQTT pipeline, and time-series storage.",
+        highlights: [
+          "Custom Go/Python agents stream host + container metrics over MQTT to a central hub.",
+          "TimescaleDB hypertables back dashboards and alerting with sub-second query latency.",
+          "Threshold + anomaly alert rules with notification fan-out and silence windows.",
+        ],
+        tech: ["Python", "Go", "MQTT", "TimescaleDB", "PostgreSQL", "Docker", "React"],
+        github: "https://github.com/varunchikkala",
+      },
+      {
+        title: "Docx — AI Document Intelligence",
+        image: docxImg,
+        year: "2025",
+        takeaway:
+          "Offline-first PWA that turns a pile of PDFs into a chat-and-search interface backed by RAG.",
+        metrics: [
+          { value: "RAG", label: "+ agentic flows" },
+          { value: "PWA", label: "offline-first" },
+          { value: "Multi-LLM", label: "Gemini / OpenAI" },
+        ],
+        blurb:
+          "Document Q&A and summarization app with vector search, agentic tools, and offline sync.",
+        highlights: [
+          "Chunking + embedding pipeline with pluggable vector store and reranker.",
+          "Agentic flows pick between summarize / extract / cite-source tools per query.",
+          "Service-worker cache keeps recently opened docs and answers usable offline.",
+        ],
+        tech: ["TypeScript", "React", "FastAPI", "Postgres", "pgvector", "LangChain", "PWA"],
+        github: "https://github.com/varunchikkala",
+      },
+    ],
+  },
+  {
+    id: "ai-security",
+    label: "AI & Security",
+    description: "LLM-driven tooling for code security and developer workflows.",
     projects: [
       {
         title: "Automated Vulnerability & Malware Analyzer",
@@ -61,19 +113,20 @@ const categories: { id: string; label: string; description: string; projects: Pr
           { value: "JSON", label: "CI-ready output" },
         ],
         blurb:
-          "A SAST tool that parses Python ASTs and pairs them with an LLM-driven malware scorer.",
+          "SAST tool that parses Python ASTs and pairs them with an LLM-driven malware scorer.",
         highlights: [
-          "Detects command injection, path traversal, hardcoded credentials, and insecure deserialization.",
+          "Detects command injection, path traversal, hardcoded credentials, insecure deserialization.",
           "LLM engine flags obfuscation, unauthorized network calls, and data leakage risks.",
           "Emits machine-readable JSON with severity, vulnerable snippets, and remediation steps.",
         ],
         tech: ["Python", "LangChain", "AST", "Gemini", "JSON"],
-        href: "https://github.com/varunchikkala",
+        github: "https://github.com/varunchikkala",
       },
       {
         title: "MCP DevOps PR Agent",
         image: mcpImg,
         year: "2025",
+        status: "in-progress",
         takeaway:
           "Turns failed CI runs into a reviewed PR comment without a human pulling the logs.",
         metrics: [
@@ -89,103 +142,84 @@ const categories: { id: string; label: string; description: string; projects: Pr
           "Exponential backoff and staggered execution for reliable automation.",
         ],
         tech: ["Python", "FastAPI", "MCP", "GitHub Actions", "Gemini", "Bandit"],
-        href: "https://github.com/varunchikkala",
-      },
-      {
-        title: "Code Documenter",
-        image: codedocImg,
-        year: "2024",
-        takeaway:
-          "Makes legacy repos readable on day one instead of week three.",
-        metrics: [
-          { value: "2", label: "languages supported" },
-          { value: "AST", label: "grounded output" },
-        ],
-        blurb:
-          "LLM-driven documentation generator for legacy Python and TypeScript repositories.",
-        highlights: [
-          "Cuts onboarding time by surfacing intent for undocumented modules.",
-          "Walks ASTs to anchor LLM output to real symbols, not hallucinations.",
-        ],
-        tech: ["Python", "LLMs", "AST parsing"],
-        href: "https://github.com/sriramnurani1995",
+        github: "https://github.com/varunchikkala",
       },
     ],
   },
   {
-    id: "data-ml",
-    label: "Data & Machine Learning",
-    description: "Pipelines, vector retrieval, and analytics on real-world datasets.",
+    id: "data-cloud",
+    label: "Data Engineering & Cloud",
+    description: "Pipelines, AWS event-driven systems, and OCR + LLM extraction at scale.",
     projects: [
       {
-        title: "AI Conversational Assistant",
-        image: ragImg,
-        year: "2024",
-        takeaway:
-          "Researchers query 2.8M papers in plain English instead of waiting overnight for a SQL run.",
-        metrics: [
-          { value: "2.8M", label: "paper embeddings" },
-          { value: "12h → <4h", label: "indexing time" },
-          { value: "80K", label: "papers per batch" },
-        ],
-        blurb:
-          "Researcher-facing RAG platform indexing 2.8M+ paper embeddings for plain-English queries.",
-        highlights: [
-          "Chunked ingestion pipeline processed 80K papers per batch, cutting indexing from 12h to <4h.",
-          "Compared Azure AI Search semantic retrieval against Milvus vector retrieval.",
-          "LLM abstraction across Gemini, OpenAI, and Hugging Face — model calls decoupled from ranking.",
-        ],
-        tech: ["Python", "Milvus", "Azure AI Search", "Gemini", "OpenAI"],
-        href: "https://github.com/varunchikkala",
-      },
-      {
-        title: "TriMet GPS Insights",
-        image: trimetImg,
+        title: "Expense Reconciliation & Data Automation",
+        image: expenseImg,
         year: "2025",
         takeaway:
-          "Turned a noisy GPS firehose into a queryable dataset transit planners can actually use.",
+          "Live pipeline that reconciles OCR-extracted invoices against federal vendor-payment records.",
         metrics: [
-          { value: "350K", label: "records / day" },
-          { value: "NL→SQL", label: "researcher interface" },
-          { value: "1", label: "city of coverage" },
+          { value: "BigQuery", label: "warehouse" },
+          { value: "OCR + LLM", label: "extraction" },
+          { value: "Redis", label: "dedupe cache" },
         ],
         blurb:
-          "ETL pipeline processing 350K+ daily GPS and stop-event records from Portland transit.",
+          "Ingests USAspending.gov vendor payments into BigQuery and matches them against parsed receipts.",
         highlights: [
-          "Fixed route IDs, computed vehicle speeds, and organized trip-level records for delay analysis.",
-          "NL-to-SQL interface with prompt sanitization for researchers to query in plain English.",
-          "MapboxGL clustering and route heatmaps for visual exploration.",
+          "OCR + LLM extraction pulls vendor, amount, date, and line items from receipt/invoice images.",
+          "Reconciliation engine matches extracted invoices to vendor-payment records and flags mismatches.",
+          "FastAPI service exposes match results; Redis layer dedupes and caches hot lookups.",
         ],
-        tech: ["Python", "PostgreSQL", "Google Cloud", "MapboxGL"],
-        href: "https://github.com/AashrithaKondaveetii/DE_Project_Pipeline_Pioneers",
+        tech: ["Python", "FastAPI", "BigQuery", "OCR", "LLM", "SQL", "Redis", "Docker"],
+        github: "https://github.com/varunchikkala",
+      },
+      {
+        title: "Inventory Upload & Anomaly Review Portal",
+        image: inventoryImg,
+        year: "2025",
+        takeaway:
+          "Event-driven AWS pipeline that ingests inventory uploads and routes anomalies for human review.",
+        metrics: [
+          { value: "S3 + Lambda", label: "ingest path" },
+          { value: "SQS + DLQ", label: "retry-safe queue" },
+          { value: "DynamoDB", label: "review state" },
+        ],
+        blurb:
+          "S3 → Lambda → SQS pipeline that validates inventory uploads and surfaces anomalies via a review portal.",
+        highlights: [
+          "S3 PUT triggers Lambda validators; failures land in a DLQ for replay instead of silent drops.",
+          "Anomalies stored in DynamoDB and surfaced through a reviewer UI with accept/reject actions.",
+          "IAM-scoped roles and per-tenant prefixes keep upload paths and access tightly isolated.",
+        ],
+        tech: ["AWS S3", "Lambda", "SQS", "DynamoDB", "Python", "React", "IAM"],
+        github: "https://github.com/varunchikkala",
       },
     ],
   },
   {
-    id: "web-apis",
-    label: "Web & APIs",
-    description: "Backend services and educational platforms shipped to real users.",
+    id: "backend-systems",
+    label: "Backend & Systems",
+    description: "High-concurrency services with real correctness guarantees.",
     projects: [
       {
-        title: "APIVerse",
-        image: apiverseImg,
-        year: "2024",
+        title: "EventSeat — High-Concurrency Reservation Platform",
+        image: eventseatImg,
+        year: "2025",
         takeaway:
-          "Gave students a safe sandbox to learn real API workflows without leaking production keys.",
+          "Ticket reservation backend that holds seats correctly under load — no double-booking.",
         metrics: [
-          { value: "25%", label: "faster iteration" },
-          { value: "OAuth", label: "key lifecycle" },
-          { value: "Vertex AI", label: "live LLM demos" },
+          { value: "Redis TTL", label: "seat holds" },
+          { value: "Idempotent", label: "booking API" },
+          { value: "Postgres tx", label: "commit path" },
         ],
         blurb:
-          "Secure API exploration platform for Portland State students to learn real-world API workflows.",
+          "Seat-hold and booking system using Redis TTL locks plus PostgreSQL transactions for safe commits.",
         highlights: [
-          "Integrated Gemini LLM endpoints via Vertex AI for live demos.",
-          "Automated API key lifecycle management with OAuth.",
-          "Improved iteration speed 25% through faster Cloud Run redeploys.",
+          "Redis TTL locks reserve seats during checkout and auto-release on timeout.",
+          "Idempotency keys + retries prevent duplicate bookings on flaky clients and webhook replays.",
+          "Postgres transactions finalize the commit with row-level locks on seat inventory.",
         ],
-        tech: ["Python", "Flask", "FastAPI", "Google Cloud", "Docker", "OAuth"],
-        href: "https://github.com/sriramnurani1995/APIverse/tree/main",
+        tech: ["Python", "FastAPI", "PostgreSQL", "Redis", "Docker"],
+        github: "https://github.com/varunchikkala",
       },
     ],
   },
@@ -242,7 +276,7 @@ function ProjectsPage() {
                       key={p.title}
                       className="group rounded-lg ring-1 ring-zinc-900 bg-zinc-950/40 overflow-hidden hover:ring-accent/40 transition-all flex flex-col"
                     >
-                      <a href={p.href} target="_blank" rel="noreferrer" className="block">
+                      <a href={p.github} target="_blank" rel="noreferrer" className="block">
                         <img
                           src={p.image}
                           alt={`${p.title} preview`}
@@ -253,9 +287,16 @@ function ProjectsPage() {
                         />
                       </a>
                       <div className="p-5 flex flex-col flex-1">
-                        <h3 className="font-display text-lg font-semibold text-zinc-100 mb-3">
-                          {p.title}
-                        </h3>
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <h3 className="font-display text-lg font-semibold text-zinc-100">
+                            {p.title}
+                          </h3>
+                          {p.status === "in-progress" && (
+                            <span className="shrink-0 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-accent/10 text-accent ring-1 ring-accent/30">
+                              In progress
+                            </span>
+                          )}
+                        </div>
                         <p className="text-sm italic text-zinc-400 mb-4 text-pretty">
                           {p.takeaway}
                         </p>
@@ -275,21 +316,23 @@ function ProjectsPage() {
                         </ul>
                         <div className="flex items-center gap-3 mt-auto">
                           <a
-                            href={p.href}
+                            href={p.github}
                             target="_blank"
                             rel="noreferrer"
                             className="text-sm font-medium text-accent hover:underline underline-offset-4"
                           >
                             GitHub
                           </a>
-                          <a
-                            href={p.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm font-medium bg-accent text-zinc-100 px-3 py-1.5 rounded ring-1 ring-accent hover:bg-accent/90 transition-all"
-                          >
-                            Demo
-                          </a>
+                          {p.demo && (
+                            <a
+                              href={p.demo}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-sm font-medium bg-accent text-zinc-100 px-3 py-1.5 rounded ring-1 ring-accent hover:bg-accent/90 transition-all"
+                            >
+                              Demo
+                            </a>
+                          )}
                         </div>
                       </div>
                     </article>
