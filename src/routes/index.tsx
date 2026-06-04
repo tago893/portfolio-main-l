@@ -383,8 +383,7 @@ function HomePage() {
                     </p>
                     <p>
                       The work I want to do next sits at the intersection of{" "}
-                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>
-                      . the systems that quietly make information findable and useful at scale.
+                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>. the systems that quietly make information findable and useful at scale.
                       If that's the world you live in, I'd love to talk.
                     </p>
                   </div>
