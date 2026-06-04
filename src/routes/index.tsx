@@ -172,13 +172,13 @@ function HomePage() {
                 Varun Chikkala · Hayward, CA
               </span>
               <h1 className="font-display text-5xl md:text-7xl font-semibold text-zinc-100 leading-tight mb-8 text-balance">
-                Backend systems at scale. Search, retrieval, and AI infrastructure.
+                Backend engineer into search, retrieval, and AI systems.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                I build backend services, RAG pipelines, and LLM-orchestrated systems.
-                Recent work: 2.8M-paper vector search pipeline with 66% latency reduction,
-                multi-provider LLM gateway, and event-driven data platforms. MS in
-                Computer Science from Portland State University.
+                Junior software engineer building backend services and experimenting with
+                RAG pipelines, vector search, and LLM orchestration. Recent work: 2.8M-paper
+                vector search with 66% latency cut, multi-provider LLM gateway, and
+                event-driven data platforms. MS in Computer Science from Portland State.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
