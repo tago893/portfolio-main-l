@@ -303,7 +303,7 @@ function HomePage() {
               <aside className="lg:col-span-4">
                 <div className="sticky top-24 space-y-4">
                   <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-6">
-                    The Trajectory
+                    At a glance
                   </h3>
                   <div className="p-5 bg-zinc-900/40 rounded-lg ring-1 ring-zinc-900">
                     <p className="text-sm font-medium text-zinc-100">Focus Areas</p>
