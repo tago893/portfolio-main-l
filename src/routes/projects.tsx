@@ -240,9 +240,9 @@ function ProjectsPage() {
                   {cat.projects.map((p, idx) => (
                     <article
                       key={p.title}
-                      className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start"
+                      className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start"
                     >
-                      <div className={`lg:col-span-6 ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
+                      <div className={`lg:col-span-4 ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
                         <a href={p.href} target="_blank" rel="noreferrer" className="block group">
                           <img
                             src={p.image}
@@ -250,11 +250,11 @@ function ProjectsPage() {
                             width={1280}
                             height={960}
                             loading="lazy"
-                            className="w-full aspect-[4/3] object-cover rounded-xl ring-1 ring-zinc-900 group-hover:ring-accent/40 transition-all"
+                            className="w-full aspect-[4/3] object-cover rounded-lg ring-1 ring-zinc-900 group-hover:ring-accent/40 transition-all"
                           />
                         </a>
                       </div>
-                      <div className="lg:col-span-6">
+                      <div className="lg:col-span-8">
                         <div className="flex items-center gap-3 mb-4">
                           <span className="text-xs font-medium text-zinc-600 uppercase tracking-[0.18em]">
                             {p.year}

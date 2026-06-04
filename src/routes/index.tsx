@@ -100,7 +100,13 @@ const skillIconMap: Record<string, LucideIcon> = {
   "Jenkins": Wrench,
 };
 
-const experience = [
+const experience: {
+  role: string;
+  org: string;
+  period: string;
+  bullets: string[];
+  tech: string[];
+}[] = [
   {
     role: "Software Engineer",
     org: "Live Music Project",
@@ -110,6 +116,7 @@ const experience = [
       "Architected an automated ETL pipeline for regional email campaigns with SendGrid + SPF/DKIM, lifting deliverability to 85%.",
       "Implemented Django RBAC across 3 user tiers, securing event management, campaign operations, and analytics access.",
     ],
+    tech: ["Python", "Django", "PostgreSQL", "Redis", "REST APIs"],
   },
   {
     role: "Graduate Student Researcher",
@@ -120,6 +127,7 @@ const experience = [
       "Transformed raw bus location data into query-ready datasets by fixing route IDs and computing vehicle speeds.",
       "Designed an NL-to-SQL interface with prompt sanitization so researchers could query transit data in plain English.",
     ],
+    tech: ["Python", "PostgreSQL", "GCP Cloud Run", "SQL"],
   },
   {
     role: "Software Engineer Intern",
@@ -130,6 +138,7 @@ const experience = [
       "Prototyped Neo4j graph models for 100+ course relationships, mapping prerequisites and learning paths.",
       "Performed functional and UI testing across 5+ dashboard workflows, surfacing layout and navigation regressions.",
     ],
+    tech: ["JavaScript", "MySQL", "MongoDB"],
   },
 ];
 
@@ -338,6 +347,20 @@ function HomePage() {
                             </li>
                           ))}
                         </ul>
+                        <div className="flex flex-wrap gap-1.5 mt-4">
+                          {job.tech.map((t) => {
+                            const TIcon = skillIconMap[t] ?? Code2;
+                            return (
+                              <span
+                                key={t}
+                                className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-900 ring-1 ring-zinc-800 rounded text-[11px] text-zinc-400"
+                              >
+                                <TIcon className="size-3 text-zinc-500" />
+                                {t}
+                              </span>
+                            );
+                          })}
+                        </div>
                       </div>
                     ))}
                   </div>
