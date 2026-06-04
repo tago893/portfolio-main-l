@@ -2,24 +2,25 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getAllPosts, formatDate } from "@/lib/posts";
-import apiverseImg from "@/assets/apiverse.jpg";
-import trimetImg from "@/assets/trimet.jpg";
-import codedocImg from "@/assets/codedoc.jpg";
+import vulnImg from "@/assets/vuln-analyzer.jpg";
+import mcpImg from "@/assets/mcp-agent.jpg";
+import ragImg from "@/assets/rag-assistant.jpg";
+import resumePdf from "@/assets/resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Varun Chikkala — Engineer & Builder" },
+      { title: "Varun Chikkala — Software Engineer" },
       {
         name: "description",
         content:
-          "MS in Computer Science from Portland State. Building full-stack web systems and machine learning pipelines.",
+          "Software engineer with 1+ year of experience building scalable backend services, data platforms, and AI-enabled applications.",
       },
-      { property: "og:title", content: "Varun Chikkala — Engineer & Builder" },
+      { property: "og:title", content: "Varun Chikkala — Software Engineer" },
       {
         property: "og:description",
         content:
-          "Selected projects, experience, and writing on engineering and machine learning.",
+          "Backend, data platforms, and AI projects from a Portland State MS CS grad based in Seattle.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -28,34 +29,82 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const skills = [
-  "Python",
-  "C / C++",
-  "Java",
-  "SQL / PostgreSQL / NoSQL",
-  "Flask",
-  "Docker / Kubernetes",
-  "Google Cloud / Azure",
-  "Machine Learning",
-  "Web Development (HTML, CSS, JS)",
+const skillGroups: { label: string; items: string[] }[] = [
+  { label: "Languages", items: ["Java", "Python", "SQL", "JavaScript", "TypeScript", "Bash"] },
+  {
+    label: "Backend",
+    items: ["Spring Boot", "Django", "FastAPI", "Flask", "REST APIs", "Microservices"],
+  },
+  {
+    label: "Data & Messaging",
+    items: ["Apache Kafka", "AWS SQS", "GCP Pub/Sub", "RabbitMQ", "Event-driven", "Async"],
+  },
+  {
+    label: "Databases & Search",
+    items: ["PostgreSQL", "MySQL", "Redis", "Elasticsearch", "Milvus", "MongoDB"],
+  },
+  {
+    label: "Cloud & DevOps",
+    items: [
+      "AWS (EC2 / S3 / RDS / SQS)",
+      "GCP Cloud Run",
+      "Docker",
+      "Kubernetes",
+      "GitHub Actions",
+      "Jenkins",
+    ],
+  },
+];
+
+const experience = [
+  {
+    role: "Software Engineer",
+    org: "Live Music Project",
+    period: "Apr 2025 — Present",
+    bullets: [
+      "Designed a Redis-backed data layer that stabilized KPI reporting and eliminated 70% of redundant aggregation queries.",
+      "Architected an automated ETL pipeline for regional email campaigns with SendGrid + SPF/DKIM, lifting deliverability to 85%.",
+      "Implemented Django RBAC across 3 user tiers, securing event management, campaign operations, and analytics access.",
+    ],
+  },
+  {
+    role: "Graduate Student Researcher",
+    org: "Portland State University",
+    period: "Apr 2025 — Aug 2025",
+    bullets: [
+      "Built an ETL transit pipeline processing 350K+ daily GPS and stop-event records from Portland's public transit system.",
+      "Transformed raw bus location data into query-ready datasets by fixing route IDs and computing vehicle speeds.",
+      "Designed an NL-to-SQL interface with prompt sanitization so researchers could query transit data in plain English.",
+    ],
+  },
+  {
+    role: "Software Engineer Intern",
+    org: "Aham Learning",
+    period: "Jan 2023 — Jun 2023",
+    bullets: [
+      "Built responsive dashboards for students and tutors using JavaScript, PHP, Laravel, MySQL, and Neo4j.",
+      "Prototyped Neo4j graph models for 100+ course relationships, mapping prerequisites and learning paths.",
+      "Performed functional and UI testing across 5+ dashboard workflows, surfacing layout and navigation regressions.",
+    ],
+  },
 ];
 
 const sideProjects = [
   {
-    title: "TriMet GPS Insights",
-    image: trimetImg,
+    title: "MCP DevOps PR Agent",
+    image: mcpImg,
     description:
-      "Real-time GPS analytics pipeline processing 1.5M+ location signals for TriMet. Reduced query latency by optimizing the PostgreSQL schema and batching writes; visualized transit insights with MapboxGL clustering and route heatmaps.",
-    tech: ["Python", "PostgreSQL", "Google Cloud", "MapboxGL"],
-    href: "https://github.com/AashrithaKondaveetii/DE_Project_Pipeline_Pioneers",
+      "An AI-assisted developer productivity tool that analyzes GitHub PR events, failed CI runs, and security findings through a FastAPI webhook service. Custom MCP servers expose Git diffs, file updates, and Actions logs as structured tools for LLM-driven automation.",
+    tech: ["Python", "FastAPI", "MCP", "GitHub Actions", "Gemini", "Bandit"],
+    href: "https://github.com/varunchikkala",
   },
   {
-    title: "Code Documenter",
-    image: codedocImg,
+    title: "AI Conversational Assistant",
+    image: ragImg,
     description:
-      "Leveraging LLMs to generate semantic documentation for legacy Python and TypeScript repositories. Cuts onboarding time for new contributors and surfaces undocumented edge cases automatically.",
-    tech: ["Python", "LLMs", "AST parsing"],
-    href: "https://github.com/sriramnurani1995",
+      "Researcher-facing RAG platform indexing 2.8M+ paper embeddings in Milvus. A chunked ingestion pipeline cut corpus indexing from 12 hours to under 4, with an LLM abstraction layer across Gemini, OpenAI, and Hugging Face.",
+    tech: ["Python", "Milvus", "Azure AI Search", "Gemini", "OpenAI"],
+    href: "https://github.com/varunchikkala",
   },
 ];
 
@@ -72,15 +121,15 @@ function HomePage() {
           <div className="max-w-7xl mx-auto">
             <header className="max-w-4xl">
               <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent mb-6">
-                Varun Chikkala · Portland, OR
+                Varun Chikkala · Seattle, WA
               </span>
               <h1 className="font-display text-5xl md:text-7xl font-semibold text-zinc-100 leading-tight mb-8 text-balance">
-                Building robust systems at the intersection of web and intelligence.
+                Building scalable backends, data platforms, and AI-enabled products.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                MS in Computer Science from Portland State University. Focused on architecting
-                scalable full-stack applications and deploying machine learning models that solve
-                practical problems.
+                Software engineer with 1+ year of experience shipping production systems in Java
+                and Python. MS in Computer Science from Portland State University. Strong in REST
+                APIs, microservices, SQL/NoSQL, and cloud-native development.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
@@ -91,26 +140,35 @@ function HomePage() {
                   <span className="size-4 shrink-0">→</span>
                   View Projects
                 </Link>
-                <Link
-                  to="/blog"
+                <a
+                  href={resumePdf.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  download="Varun-Chikkala-Resume.pdf"
                   className="bg-zinc-900 text-zinc-300 py-2.5 pr-5 pl-4 rounded-md ring-1 ring-zinc-800 flex items-center gap-2 text-sm font-medium hover:text-zinc-100 transition-all"
                 >
-                  <span className="size-4 shrink-0">○</span>
-                  Read Writing
+                  <span className="size-4 shrink-0">↓</span>
+                  Download Resume
+                </a>
+                <Link
+                  to="/blog"
+                  className="text-zinc-300 py-2.5 px-2 text-sm font-medium hover:text-zinc-100 transition-all"
+                >
+                  Read Writing →
                 </Link>
               </div>
             </header>
           </div>
         </section>
 
-        {/* Featured Project: APIVerse */}
+        {/* Featured Project: Vulnerability Analyzer */}
         <section id="projects" className="py-24 bg-zinc-950/30 border-y border-zinc-900/60">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7">
                 <img
-                  src={apiverseImg}
-                  alt="APIVerse — API exploration platform interface"
+                  src={vulnImg}
+                  alt="Automated Vulnerability & Malware Analyzer — visualization"
                   width={1280}
                   height={960}
                   className="w-full aspect-[4/3] object-cover rounded-xl ring-1 ring-zinc-900"
@@ -121,19 +179,20 @@ function HomePage() {
                   Featured Case Study
                 </span>
                 <h2 className="font-display text-4xl font-semibold text-zinc-100 mb-6 text-balance">
-                  APIVerse
+                  Automated Vulnerability & Malware Analyzer
                 </h2>
                 <p className="text-base leading-relaxed text-pretty max-w-[48ch] mb-6">
-                  A secure API exploration platform for Portland State students to learn real-world
-                  API workflows. Integrated Gemini LLM endpoints via Vertex AI and automated API
-                  key lifecycle management.
+                  A static application security testing tool that parses Python ASTs to detect
+                  command injection, path traversal, hardcoded credentials, and insecure
+                  deserialization — paired with an LLM-based malware engine that scores source code
+                  for obfuscation, unauthorized network calls, and data leakage risks.
                 </p>
                 <p className="text-sm leading-relaxed text-zinc-500 max-w-[48ch] mb-8">
-                  <span className="text-zinc-300">Impact —</span> improved scalability and
-                  iteration speed by 25% through faster redeploys on Cloud Run.
+                  <span className="text-zinc-300">Output —</span> machine-readable JSON reports
+                  with vulnerability types, severity, vulnerable snippets, and remediation steps.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {["Python", "Flask", "FastAPI", "Google Cloud", "Docker", "OAuth"].map((t) => (
+                  {["Python", "LangChain", "AST", "Gemini", "JSON"].map((t) => (
                     <span
                       key={t}
                       className="px-3 py-1 bg-zinc-900 ring-1 ring-zinc-800 rounded-full text-xs"
@@ -143,7 +202,7 @@ function HomePage() {
                   ))}
                 </div>
                 <a
-                  href="https://github.com/sriramnurani1995/APIverse/tree/main"
+                  href="https://github.com/varunchikkala"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-zinc-100 font-medium hover:text-accent transition-colors group"
@@ -156,7 +215,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* About: Education, more projects, skills */}
+        {/* About: Experience, education, more projects, skills */}
         <section id="about" className="py-32 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-12 gap-16">
@@ -166,53 +225,105 @@ function HomePage() {
                     The Trajectory
                   </h3>
                   <div className="p-5 bg-zinc-900/40 rounded-lg ring-1 ring-zinc-900">
-                    <p className="text-sm font-medium text-zinc-100">Core Competencies</p>
+                    <p className="text-sm font-medium text-zinc-100">Focus Areas</p>
                     <ul className="mt-3 space-y-1.5 text-sm text-zinc-500">
-                      <li>Full-Stack Development</li>
-                      <li>Machine Learning Pipelines</li>
-                      <li>Distributed Systems</li>
-                      <li>Cloud Infrastructure (GCP, Azure)</li>
+                      <li>Backend services & REST APIs</li>
+                      <li>Data pipelines & ETL</li>
+                      <li>LLM-powered tooling</li>
+                      <li>Cloud-native deployments</li>
                     </ul>
                   </div>
                   <div className="p-5 bg-zinc-900/40 rounded-lg ring-1 ring-zinc-900">
-                    <p className="text-sm font-medium text-zinc-100">Hobbies</p>
-                    <ul className="mt-3 space-y-1.5 text-sm text-zinc-500">
-                      <li>Long-form reading</li>
-                      <li>Cricket & football</li>
-                      <li>Photography</li>
-                      <li>Exploring the PNW</li>
-                    </ul>
+                    <p className="text-sm font-medium text-zinc-100">Based in</p>
+                    <p className="mt-3 text-sm text-zinc-500">
+                      Seattle, WA · open to remote and on-site SDE roles.
+                    </p>
                   </div>
+                  <a
+                    href={resumePdf.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    download="Varun-Chikkala-Resume.pdf"
+                    className="block p-5 bg-accent/10 rounded-lg ring-1 ring-accent/30 hover:bg-accent/20 transition-colors"
+                  >
+                    <p className="text-sm font-medium text-zinc-100">Resume (PDF)</p>
+                    <p className="mt-2 text-xs text-zinc-400">
+                      Full work history, projects, and skills — one page.
+                    </p>
+                  </a>
                 </div>
               </aside>
 
               <div className="lg:col-span-8 space-y-20">
-                {/* Education entries */}
-                <div className="space-y-12">
-                  <div className="relative pl-8 border-l border-zinc-900/80">
-                    <div className="absolute -left-[5px] top-1 size-2.5 rounded-full bg-accent ring-4 ring-background" />
-                    <span className="text-sm font-medium text-accent mb-2 block uppercase tracking-wider">
-                      Education
-                    </span>
-                    <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">
-                      MS in Computer Science
-                    </h4>
-                    <p className="text-zinc-500 mb-3">Portland State University · 2023 — 2025</p>
-                    <p className="max-w-[56ch] text-pretty leading-relaxed">
-                      Graduated June 2025, GPA 3.88/4.0. Coursework spanning intelligent systems,
-                      backend architectures, and large-scale data engineering.
-                    </p>
+                {/* Experience */}
+                <div>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
+                    Experience
+                  </h3>
+                  <div className="space-y-10">
+                    {experience.map((job, i) => (
+                      <div
+                        key={job.role + job.org}
+                        className="relative pl-8 border-l border-zinc-900/80"
+                      >
+                        <div
+                          className={`absolute -left-[5px] top-1 size-2.5 rounded-full ring-4 ring-background ${
+                            i === 0 ? "bg-accent" : "bg-zinc-700"
+                          }`}
+                        />
+                        <p className="text-xs font-medium text-accent uppercase tracking-wider mb-2">
+                          {job.period}
+                        </p>
+                        <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">
+                          {job.role}
+                        </h4>
+                        <p className="text-zinc-500 mb-4">{job.org}</p>
+                        <ul className="space-y-2 max-w-[60ch]">
+                          {job.bullets.map((b) => (
+                            <li
+                              key={b}
+                              className="text-sm leading-relaxed text-pretty text-zinc-400 pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-zinc-700"
+                            >
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
                   </div>
-                  <div className="relative pl-8 border-l border-zinc-900/80">
-                    <div className="absolute -left-[5px] top-1 size-2.5 rounded-full bg-zinc-700 ring-4 ring-background" />
-                    <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">
-                      B.Tech in Computer Science (Bioinformatics)
-                    </h4>
-                    <p className="text-zinc-500 mb-3">VIT, Vellore · 2019 — 2023</p>
-                    <p className="max-w-[56ch] text-pretty leading-relaxed">
-                      Foundation in algorithms, systems, and computational biology — where I first
-                      got hooked on data-heavy software.
-                    </p>
+                </div>
+
+                {/* Education */}
+                <div>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
+                    Education
+                  </h3>
+                  <div className="space-y-10">
+                    <div className="relative pl-8 border-l border-zinc-900/80">
+                      <div className="absolute -left-[5px] top-1 size-2.5 rounded-full bg-accent ring-4 ring-background" />
+                      <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">
+                        MS in Computer Science
+                      </h4>
+                      <p className="text-zinc-500 mb-3">
+                        Portland State University · 2023 — 2025 · GPA 3.88
+                      </p>
+                      <p className="max-w-[60ch] text-pretty leading-relaxed text-sm text-zinc-400">
+                        Coursework: Data Engineering, Large Language Models, Software Engineering,
+                        Database Management Systems, Cloud Engineering, Generative Security,
+                        Computer Networks, Advanced Data Structures and Algorithms.
+                      </p>
+                    </div>
+                    <div className="relative pl-8 border-l border-zinc-900/80">
+                      <div className="absolute -left-[5px] top-1 size-2.5 rounded-full bg-zinc-700 ring-4 ring-background" />
+                      <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">
+                        B.Tech in Computer Science (Bioinformatics)
+                      </h4>
+                      <p className="text-zinc-500 mb-3">VIT, Vellore · 2019 — 2023</p>
+                      <p className="max-w-[60ch] text-pretty leading-relaxed text-sm text-zinc-400">
+                        Foundation in algorithms, systems, and computational biology — where the
+                        pull toward data-heavy software first started.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -264,14 +375,23 @@ function HomePage() {
                   <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
                     Skills & Tools
                   </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.map((s) => (
-                      <span
-                        key={s}
-                        className="px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
-                      >
-                        {s}
-                      </span>
+                  <div className="space-y-6">
+                    {skillGroups.map((group) => (
+                      <div key={group.label}>
+                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 mb-3">
+                          {group.label}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {group.items.map((s) => (
+                            <span
+                              key={s}
+                              className="px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
+                            >
+                              {s}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
