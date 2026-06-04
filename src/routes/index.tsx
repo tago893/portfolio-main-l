@@ -1,5 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Code2, Server, Network, Database, Cloud } from "lucide-react";
+import {
+  Code2, Server, Network, Database, Cloud,
+  Coffee, Terminal, Table, Zap, Beaker,
+  Globe, Boxes, Activity, MessageSquare, MessageCircle,
+  Search, GitBranch, Wrench, Box, Hexagon, Clock,
+} from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getAllPosts, formatDate } from "@/lib/posts";
@@ -7,6 +12,7 @@ import vulnImg from "@/assets/vuln-analyzer.jpg";
 import mcpImg from "@/assets/mcp-agent.jpg";
 import ragImg from "@/assets/rag-assistant.jpg";
 import resumePdf from "@/assets/resume.pdf.asset.json";
+import type { LucideIcon } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
