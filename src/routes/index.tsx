@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Code2, Server, Network, Database, Cloud } from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getAllPosts, formatDate } from "@/lib/posts";
@@ -29,22 +30,26 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const skillGroups: { label: string; items: string[] }[] = [
-  { label: "Languages", items: ["Java", "Python", "SQL", "JavaScript", "TypeScript", "Bash"] },
+const skillGroups: { label: string; icon: typeof Code2; items: string[] }[] = [
+  { label: "Languages", icon: Code2, items: ["Java", "Python", "SQL", "JavaScript", "TypeScript", "Bash"] },
   {
     label: "Backend",
+    icon: Server,
     items: ["Spring Boot", "Django", "FastAPI", "Flask", "REST APIs", "Microservices"],
   },
   {
     label: "Data & Messaging",
+    icon: Network,
     items: ["Apache Kafka", "AWS SQS", "GCP Pub/Sub", "RabbitMQ", "Event-driven", "Async"],
   },
   {
     label: "Databases & Search",
+    icon: Database,
     items: ["PostgreSQL", "MySQL", "Redis", "Elasticsearch", "Milvus", "MongoDB"],
   },
   {
     label: "Cloud & DevOps",
+    icon: Cloud,
     items: [
       "AWS (EC2 / S3 / RDS / SQS)",
       "GCP Cloud Run",
@@ -356,23 +361,27 @@ function HomePage() {
                     Skills & Tools
                   </h3>
                   <div className="space-y-6">
-                    {skillGroups.map((group) => (
-                      <div key={group.label}>
-                        <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 mb-3">
-                          {group.label}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {group.items.map((s) => (
-                            <span
-                              key={s}
-                              className="px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
-                            >
-                              {s}
-                            </span>
-                          ))}
+                    {skillGroups.map((group) => {
+                      const Icon = group.icon;
+                      return (
+                        <div key={group.label}>
+                          <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 mb-3">
+                            <Icon className="size-4 text-accent" />
+                            {group.label}
+                          </p>
+                          <div className="flex flex-wrap gap-2">
+                            {group.items.map((s) => (
+                              <span
+                                key={s}
+                                className="px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
+                              >
+                                {s}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>

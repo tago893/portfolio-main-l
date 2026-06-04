@@ -1,3 +1,5 @@
+import { Github, Linkedin, Mail } from "lucide-react";
+
 export function SiteFooter() {
   const year = new Date().getUTCFullYear();
   return (
@@ -7,25 +9,31 @@ export function SiteFooter() {
           <span className="font-display font-semibold text-zinc-100">Varun Chikkala</span>
           <p className="text-sm text-zinc-500">Software Engineer · Backend · Data · AI</p>
         </div>
-        <div className="flex gap-8 text-sm text-zinc-400">
+        <div className="flex gap-6 text-sm text-zinc-400">
           <a
             href="https://github.com/varunchikkala"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-zinc-100 transition-colors"
+            aria-label="GitHub"
+            className="inline-flex items-center gap-2 hover:text-zinc-100 transition-colors"
           >
-            GitHub
+            <Github className="size-4" /> GitHub
           </a>
           <a
             href="https://www.linkedin.com/in/varun-chikkala/"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-zinc-100 transition-colors"
+            aria-label="LinkedIn"
+            className="inline-flex items-center gap-2 hover:text-zinc-100 transition-colors"
           >
-            LinkedIn
+            <Linkedin className="size-4" /> LinkedIn
           </a>
-          <a href="mailto:chvarun245@gmail.com" className="hover:text-zinc-100 transition-colors">
-            Email
+          <a
+            href="mailto:chvarun245@gmail.com"
+            aria-label="Email"
+            className="inline-flex items-center gap-2 hover:text-zinc-100 transition-colors"
+          >
+            <Mail className="size-4" /> Email
           </a>
         </div>
         <div className="text-xs text-zinc-600">© {year} · Seattle, WA</div>
