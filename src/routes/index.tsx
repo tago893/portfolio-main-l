@@ -99,6 +99,8 @@ const skillIconMap: Record<string, LucideIcon> = {
   "GitHub Actions": GitBranch,
   "Jenkins": Wrench,
 };
+
+const experience = [
   {
     role: "Software Engineer",
     org: "Live Music Project",
@@ -135,7 +137,7 @@ const skillIconMap: Record<string, LucideIcon> = {
 
 
 function HomePage() {
-  const posts = getAllPosts().slice(0, 3);
+  const posts = getAllPosts().filter((p) => !p.tags.includes("draft")).slice(0, 3);
 
   return (
     <div className="bg-background text-zinc-400 font-body antialiased">
@@ -407,14 +409,18 @@ function HomePage() {
                             {group.label}
                           </p>
                           <div className="flex flex-wrap gap-2">
-                            {group.items.map((s) => (
-                              <span
-                                key={s}
-                                className="px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
-                              >
-                                {s}
-                              </span>
-                            ))}
+                            {group.items.map((s) => {
+                              const SkillIcon = skillIconMap[s] ?? Code2;
+                              return (
+                                <span
+                                  key={s}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900/60 ring-1 ring-zinc-900 rounded-md text-sm text-zinc-300"
+                                >
+                                  <SkillIcon className="size-3.5 text-zinc-500" />
+                                  {s}
+                                </span>
+                              );
+                            })}
                           </div>
                         </div>
                       );
