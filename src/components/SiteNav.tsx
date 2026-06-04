@@ -9,7 +9,7 @@ export function SiteNav() {
           Varun Chikkala
         </Link>
         <div className="flex items-center gap-8 text-sm font-medium text-zinc-400">
-          <Link to="/" hash="projects" className="hover:text-zinc-100 transition-colors">
+          <Link to="/projects" activeProps={{ className: "text-zinc-100" }} className="hover:text-zinc-100 transition-colors">
             Projects
           </Link>
           <Link
