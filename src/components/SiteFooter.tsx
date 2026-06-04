@@ -1,3 +1,5 @@
+import { Github, Linkedin, Mail } from "lucide-react";
+
 export function SiteFooter() {
   const year = new Date().getUTCFullYear();
   return (
