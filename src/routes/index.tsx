@@ -322,6 +322,11 @@ function HomePage() {
                   <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">About</h3>
                   <div className="space-y-5 max-w-[62ch] text-[15px] leading-relaxed text-zinc-400 text-pretty">
                     <p>
+                      My path into software started at VIT Vellore, where a bioinformatics-flavored CS degree pulled me
+                      toward data-heavy problems early, the kind where the shape of the data matters as much as the code
+                      around it.
+                    </p>
+                    <p>
                       I moved to the U.S. for my{" "}
                       <span className="text-zinc-200">MS in Computer Science at Portland State</span>, and that's where
                       things clicked. I went deep on distributed systems, data engineering, and LLMs, and started
