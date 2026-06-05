@@ -179,10 +179,10 @@ function HomePage() {
                 </span>
               </div>
               <h1 className="font-display text-5xl md:text-7xl font-semibold text-zinc-100 leading-tight mb-8 text-balance">
-                Backend engineer into search, retrieval, and AI systems.
+                Software engineer who likes building things that ship.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                MS CS grad from Portland State. Full-stack SDE at Live Music Project, building 0-to-1 products that actually ship. Into backend engineering, RAG pipelines, vector databases, and LLM orchestration. Looking for a team I can learn from while building systems that matter.
+                MS CS grad from Portland State. Full-stack SDE at Live Music Project, building 0-to-1 products that actually ship. Into backend engineering, data systems, and AI tooling. Looking for a team I can learn from while building work that matters.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
@@ -346,10 +346,9 @@ function HomePage() {
                       teams actually want around.
                     </p>
                     <p>
-                      The work I want to do next sits at the intersection of{" "}
-                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>. Systems that
-                      quietly make information findable and useful at scale. If that's the world you live in, I'd love to
-                      talk.
+                      I want to keep building 0-to-1 products with teams that care about impact. Whether that is backend
+                      systems, data infrastructure, or AI powered tools, I am open to the work as long as there is room
+                      to learn and ship things that matter. If that sounds like your team, I would love to talk.
                     </p>
                   </div>
                 </div>
