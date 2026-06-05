@@ -35,7 +35,10 @@ jobs:
       - name: Locate build output and prepare SPA fallback
         id: out
         run: |
-          for d in .output/public .output/client dist .output/static; do
+          echo "Checking generated index.html files..."
+          find . -maxdepth 4 -name index.html -type f 2>/dev/null | sort | head -50
+
+          for d in .output/client .output/public dist build/public .output/static; do
             if [ -f "$d/index.html" ]; then
               echo "dir=$d" >> "$GITHUB_OUTPUT"
               touch "$d/.nojekyll"
@@ -44,9 +47,10 @@ jobs:
               exit 0
             fi
           done
-          echo "No build output found. Full .output tree:" >&2
+          echo "No build output found. Debug tree:" >&2
           find .output -maxdepth 4 -type f 2>/dev/null | head -100 >&2 || true
           find dist -maxdepth 4 -type f 2>/dev/null | head -50 >&2 || true
+          find build -maxdepth 4 -type f 2>/dev/null | head -50 >&2 || true
           exit 1
 
       - name: Upload Pages artifact
