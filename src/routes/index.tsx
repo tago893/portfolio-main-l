@@ -182,9 +182,7 @@ function HomePage() {
                 Backend engineer into search, retrieval, and AI systems.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                MS CS grad from Portland State, building AI and data systems that turn large-scale information into
-                secure, searchable, and usable insights. Into backend engineering, RAG pipelines, vector databases, and
-                LLM orchestration. I like 0-to-1 work. Designing, prototyping, and turning ideas into working systems.
+                MS CS grad from Portland State. Full-stack SDE at Live Music Project, building 0-to-1 products that actually ship. Into backend engineering, RAG pipelines, vector databases, and LLM orchestration. Looking for a team I can learn from while building systems that matter.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
@@ -342,17 +340,16 @@ function HomePage() {
                       of reliability that no class ever could.
                     </p>
                     <p>
-                      Today I'm an early-career engineer at <span className="text-zinc-200">Live Music Project</span>,
-                      building backend services for event operations, hardening analytics, and shipping access control
-                      across internal tools. I'm a junior SDE, and I lean into that honestly. Im here to learn from
-                      people who've shipped at scale, take on the unsexy work, and grow into the kind of engineer teams
-                      actually want around.
+                      Today I'm a <span className="text-zinc-200">full-stack SDE at Live Music Project</span>, building
+                      0-to-1 products for event operations and shipping access control across internal tools. I'm here to
+                      learn from people who've shipped at scale, take on the hard work, and grow into the kind of engineer
+                      teams actually want around.
                     </p>
                     <p>
                       The work I want to do next sits at the intersection of{" "}
-                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>. the systems that
-                      quietly make information findable and useful at scale. If that's the world you live in, I'd love
-                      to talk.
+                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>. Systems that
+                      quietly make information findable and useful at scale. If that's the world you live in, I'd love to
+                      talk.
                     </p>
                   </div>
                 </div>
