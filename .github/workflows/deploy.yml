@@ -35,7 +35,7 @@ jobs:
       - name: Locate build output and prepare SPA fallback
         id: out
         run: |
-          for d in .output/public dist .vercel/output/static; do
+          for d in .output/public .output/client dist .output/static; do
             if [ -f "$d/index.html" ]; then
               echo "dir=$d" >> "$GITHUB_OUTPUT"
               touch "$d/.nojekyll"
