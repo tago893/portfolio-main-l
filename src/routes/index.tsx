@@ -338,11 +338,11 @@ function HomePage() {
                       shape of the data matters as much as the code around it.
                     </p>
                     <p>
-                      My first taste of real engineering came at{" "}
-                      <span className="text-zinc-200">Aham Learning</span>, building student and
-                      tutor dashboards end-to-end. I modeled course relationships in Neo4j, shipped
-                      features across the stack, and learned how messy a product feels right before
-                      a release, and how good it feels to fix the last bug at midnight.
+                      My first taste of real engineering came building full-stack
+                      dashboards and data models for an ed-tech platform. I worked with Neo4j,
+                      PHP, Laravel, and MySQL, shipped features across the stack, and learned
+                      how messy a product feels right before a release, and how good it feels
+                      to fix the last bug at midnight.
                     </p>
                     <p>
                       I moved to the U.S. for my{" "}
