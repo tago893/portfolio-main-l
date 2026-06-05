@@ -111,4 +111,45 @@ jobs:
           retention-days: 7
 
       - name: Deploy to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        id: deploy
+        run: |
+          url=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Deployed to: $url"
+
+      - name: Smoke test production URL
+        run: |
+          url="${{ steps.deploy.outputs.url }}"
+          if [ -z "$url" ]; then
+            echo "No deployment URL captured"
+            exit 1
+          fi
+
+          echo "Smoke testing $url"
+          # Retry up to 5 times to allow propagation
+          for i in 1 2 3 4 5; do
+            status=$(curl -s -o /tmp/body.txt -w "%{http_code}" -L "$url" || echo "000")
+            echo "Attempt $i: HTTP $status"
+            if [ "$status" = "200" ]; then
+              echo "Smoke test passed"
+              exit 0
+            fi
+            sleep 5
+          done
+
+          echo "=== Response body (first 2KB) ==="
+          head -c 2048 /tmp/body.txt || true
+          echo
+
+          if [ "$status" = "401" ]; then
+            echo "FAIL: deployment is returning 401 (Vercel Deployment Protection is enabled)."
+            echo "Disable it at: Vercel Project -> Settings -> Deployment Protection."
+            exit 1
+          fi
+          if [ "$status" = "404" ]; then
+            echo "FAIL: deployment is returning 404 (no matching route in .vercel/output)."
+            exit 1
+          fi
+          echo "FAIL: unexpected status $status"
+          exit 1
+
