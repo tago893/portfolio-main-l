@@ -32,20 +32,27 @@ jobs:
       - name: Build static site
         run: bun run build
 
-      - name: Add SPA fallback and .nojekyll
+      - name: Locate build output and prepare SPA fallback
+        id: out
         run: |
-          touch .output/public/.nojekyll
-          # GitHub Pages serves 404.html for unknown paths; copy index as fallback
-          # so client-side routing still works on direct deep links.
-          if [ ! -f .output/public/404.html ]; then
-            cp .output/public/index.html .output/public/404.html
-          fi
-          ls -la .output/public
+          for d in .output/public dist .vercel/output/static; do
+            if [ -f "$d/index.html" ]; then
+              echo "dir=$d" >> "$GITHUB_OUTPUT"
+              touch "$d/.nojekyll"
+              [ -f "$d/404.html" ] || cp "$d/index.html" "$d/404.html"
+              ls -la "$d"
+              exit 0
+            fi
+          done
+          echo "No build output found" >&2
+          ls -la .output 2>/dev/null || true
+          ls -la dist 2>/dev/null || true
+          exit 1
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: ${{ steps.out.outputs.dir }}
 
   deploy:
     needs: build
