@@ -4,8 +4,6 @@
 //     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-export default defineConfig({
-  vite: { base: "/portfolio-main-l/" },
-});
 
-export default defineConfig({});
+
+export default defineConfig({ vite: { base: "/portfolio-main-l/" }});
