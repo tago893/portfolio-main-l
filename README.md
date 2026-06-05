@@ -32,6 +32,15 @@ This repo powers my personal portfolio at [varunchikkala.dev](https://varunchikk
 
 
 
+## Deployment
+
+This site deploys automatically to Vercel via GitHub Actions on every push to `main`.
+
+Required repository secrets (`Settings → Secrets and variables → Actions`):
+- `VERCEL_TOKEN` — Vercel personal access token
+- `VERCEL_ORG_ID` — Organization ID from `vercel.json`
+- `VERCEL_PROJECT_ID` — Project ID from `vercel.json`
+
 ---
 
 Built with care. No templates, no fluff — just the work.
