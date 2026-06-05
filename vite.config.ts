@@ -6,18 +6,23 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Static site build for GitHub Pages. TanStack Start prerenders every route
+// to HTML and Nitro's `static` preset emits a plain `.output/public` tree —
+// no server runtime needed.
 export default defineConfig({
   nitro: {
-    preset: "vercel",
-    output: {
-      dir: ".vercel/output",
-      serverDir: ".vercel/output/functions/__server.func",
-      publicDir: ".vercel/output/static",
-    },
+    preset: "static",
   },
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+    },
+    pages: [
+      { path: "/" },
+      { path: "/projects" },
+      { path: "/blog" },
+      { path: "/blog/draft-placeholder" },
+    ],
   },
 });

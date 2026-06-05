@@ -1,15 +1,21 @@
-name: Deploy to Vercel
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,148 +29,31 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Install Vercel CLI
-        run: bun add -g vercel
-
-      - name: Pull Vercel Environment
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build for Vercel
+      - name: Build static site
         run: bun run build
 
-      - name: Generate build inspection report
-        if: always()
+      - name: Add SPA fallback and .nojekyll
         run: |
-          mkdir -p build-inspection
-
-          {
-            echo "=== .vercel/output recursive listing ==="
-            ls -laR .vercel/output 2>/dev/null || echo "No .vercel/output directory"
-            echo
-            echo "=== dist recursive listing ==="
-            ls -laR dist 2>/dev/null || echo "No dist directory"
-            echo
-            echo "=== .output recursive listing ==="
-            ls -laR .output 2>/dev/null || echo "No .output directory"
-          } > build-inspection/listing.txt
-
-          {
-            echo "=== .vercel/output (find) ==="
-            find .vercel/output -type f 2>/dev/null | sort || true
-            echo
-            echo "=== dist (find) ==="
-            find dist -type f 2>/dev/null | sort || true
-            echo
-            echo "=== .output (find) ==="
-            find .output -type f 2>/dev/null | sort || true
-          } > build-inspection/files.txt
-
-          # Copy key manifest/config files for quick inspection
-          for f in \
-            .vercel/output/config.json \
-            .vercel/output/builds.json \
-            .vercel/project.json \
-            vercel.json; do
-            if [ -f "$f" ]; then
-              dest="build-inspection/$(echo "$f" | tr '/' '_')"
-              cp "$f" "$dest"
-            fi
-          done
-
-          # Copy any function .vc-config.json files
-          find .vercel/output -name '.vc-config.json' 2>/dev/null | while read -r vc; do
-            dest="build-inspection/vc-config_$(echo "$vc" | tr '/' '_').json"
-            cp "$vc" "$dest"
-          done
-
-          echo "=== build-inspection contents ==="
-          ls -la build-inspection
-          cat build-inspection/listing.txt
-
-      - name: Upload build inspection artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-inspection
-          path: build-inspection
-          if-no-files-found: warn
-          retention-days: 7
-
-      - name: Upload Vercel output artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: vercel-output
-          path: .vercel/output
-          if-no-files-found: warn
-          retention-days: 7
-
-      - name: Upload dist artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist-output
-          path: |
-            dist
-            .output
-          if-no-files-found: warn
-          retention-days: 7
-
-      - name: Deploy to Vercel
-        id: deploy
-        run: |
-          url=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
-          echo "url=$url" >> "$GITHUB_OUTPUT"
-          echo "Deployed to: $url"
-
-      - name: Smoke test production URL
-        id: smoke
-        run: |
-          url="${{ steps.deploy.outputs.url }}"
-          if [ -z "$url" ]; then
-            echo "No deployment URL captured"
-            exit 1
+          touch .output/public/.nojekyll
+          # GitHub Pages serves 404.html for unknown paths; copy index as fallback
+          # so client-side routing still works on direct deep links.
+          if [ ! -f .output/public/404.html ]; then
+            cp .output/public/index.html .output/public/404.html
           fi
+          ls -la .output/public
 
-          mkdir -p smoke-test-results
-          echo "Smoke testing $url"
-          # Retry up to 5 times to allow propagation
-          for i in 1 2 3 4 5; do
-            status=$(curl -s -o smoke-test-results/body.txt -D smoke-test-results/headers.txt -w "%{http_code}" -L "$url" || echo "000")
-            echo "Attempt $i: HTTP $status"
-            if [ "$status" = "200" ]; then
-              echo "Smoke test passed"
-              exit 0
-            fi
-            sleep 5
-          done
-
-          echo "=== Response headers ==="
-          cat smoke-test-results/headers.txt
-          echo
-
-          echo "=== Response body (first 2KB) ==="
-          head -c 2048 smoke-test-results/body.txt || true
-          echo
-
-          if [ "$status" = "401" ]; then
-            echo "FAIL: deployment is returning 401 (Vercel Deployment Protection is enabled)."
-            echo "Disable it at: Vercel Project -> Settings -> Deployment Protection."
-            exit 1
-          fi
-          if [ "$status" = "404" ]; then
-            echo "FAIL: deployment is returning 404 (no matching route in .vercel/output)."
-            exit 1
-          fi
-          echo "FAIL: unexpected status $status"
-          exit 1
-
-      - name: Upload smoke test results
-        if: failure() && steps.smoke.outcome == 'failure'
-        uses: actions/upload-artifact@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: smoke-test-results
-          path: smoke-test-results
-          if-no-files-found: warn
-          retention-days: 7
+          path: .output/public
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
