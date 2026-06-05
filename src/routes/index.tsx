@@ -140,7 +140,8 @@ const experience: {
     ],
     tech: ["Linux", "Bash", "Docker"],
   },
-  {
+];
+
 
 
 
