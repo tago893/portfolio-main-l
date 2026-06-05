@@ -35,22 +35,25 @@ jobs:
       - name: Locate build output and prepare SPA fallback
         id: out
         run: |
-          echo "Checking generated index.html files..."
-          find . -maxdepth 4 -name index.html -type f 2>/dev/null | sort | head -50
+          echo "Generated html files:"
+          find . -maxdepth 4 \( -name index.html -o -name _shell.html \) -type f 2>/dev/null | sort | head -50
 
-          for d in .output/client .output/public dist build/public .output/static; do
-            if [ -f "$d/index.html" ]; then
+          for d in dist/client .output/client .output/public dist build/public; do
+            if [ -f "$d/index.html" ] || [ -f "$d/_shell.html" ]; then
               echo "dir=$d" >> "$GITHUB_OUTPUT"
-              touch "$d/.nojekyll"
+              # TanStack Start SPA mode emits _shell.html — use it as the SPA shell.
+              if [ ! -f "$d/index.html" ] && [ -f "$d/_shell.html" ]; then
+                cp "$d/_shell.html" "$d/index.html"
+              fi
               [ -f "$d/404.html" ] || cp "$d/index.html" "$d/404.html"
+              touch "$d/.nojekyll"
               ls -la "$d"
               exit 0
             fi
           done
           echo "No build output found. Debug tree:" >&2
-          find .output -maxdepth 4 -type f 2>/dev/null | head -100 >&2 || true
-          find dist -maxdepth 4 -type f 2>/dev/null | head -50 >&2 || true
-          find build -maxdepth 4 -type f 2>/dev/null | head -50 >&2 || true
+          find dist -maxdepth 4 -type f 2>/dev/null | head -100 >&2 || true
+          find .output -maxdepth 4 -type f 2>/dev/null | head -50 >&2 || true
           exit 1
 
       - name: Upload Pages artifact

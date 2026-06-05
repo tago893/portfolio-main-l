@@ -15,4 +15,8 @@ export default defineConfig({
       enabled: true,
     },
   },
+  // Skip Nitro/Cloudflare bundling — GitHub Pages serves the static
+  // Vite client output directly. Without this, Nitro prerender fails
+  // and no index.html is emitted.
+  nitro: false,
 });
