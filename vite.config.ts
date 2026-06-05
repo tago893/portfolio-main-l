@@ -11,7 +11,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 const BASE_PATH = "/portfolio-main-l/";
 
 export default defineConfig({
-  base: BASE_PATH,
+  vite: { base: BASE_PATH },
   tanstackStart: {
     spa: {
       enabled: true,
