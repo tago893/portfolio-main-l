@@ -6,15 +6,23 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Static site build for GitHub Pages. Nitro prerenders every route into
-// plain HTML under .output/public — no server runtime needed.
+// Static site build for GitHub Pages. TanStack Start prerenders every route
+// to HTML and Nitro's `static` preset emits a plain `.output/public` tree —
+// no server runtime needed.
 export default defineConfig({
   nitro: {
     preset: "static",
+  },
+  tanstackStart: {
     prerender: {
+      enabled: true,
       crawlLinks: true,
-      failOnError: false,
-      routes: ["/", "/projects", "/blog", "/blog/draft-placeholder", "/404.html"],
     },
+    pages: [
+      { path: "/" },
+      { path: "/projects" },
+      { path: "/blog" },
+      { path: "/blog/draft-placeholder" },
+    ],
   },
 });
