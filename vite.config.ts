@@ -5,11 +5,13 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// SPA build for GitHub Pages. TanStack Start emits a single index.html +
-// client bundle that can be served by any static host. Routing happens
-// entirely in the browser; the workflow copies index.html -> 404.html so
-// GitHub Pages serves the SPA shell for deep links.
+// GitHub Pages serves this project from /portfolio-main-l/ (project page,
+// not user page), so all asset URLs and the router must be prefixed with
+// that subpath. If you rename the repo, update BASE_PATH to match.
+const BASE_PATH = "/portfolio-main-l/";
+
 export default defineConfig({
+  vite: { base: BASE_PATH },
   tanstackStart: {
     spa: {
       enabled: true,
