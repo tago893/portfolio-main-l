@@ -44,9 +44,9 @@ jobs:
               exit 0
             fi
           done
-          echo "No build output found" >&2
-          ls -la .output 2>/dev/null || true
-          ls -la dist 2>/dev/null || true
+          echo "No build output found. Full .output tree:" >&2
+          find .output -maxdepth 4 -type f 2>/dev/null | head -100 >&2 || true
+          find dist -maxdepth 4 -type f 2>/dev/null | head -50 >&2 || true
           exit 1
 
       - name: Upload Pages artifact
