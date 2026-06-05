@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { VisitCounter } from "./VisitCounter";
 
 export function SiteFooter() {
   const year = new Date().getUTCFullYear();
@@ -36,7 +37,10 @@ export function SiteFooter() {
             <Mail className="size-4" /> Email
           </a>
         </div>
-        <div className="text-xs text-zinc-600">© {year} · Hayward, CA</div>
+        <div className="flex items-center gap-4 text-xs text-zinc-600">
+          <VisitCounter />
+          <span>© {year} · Hayward, CA</span>
+        </div>
       </div>
     </footer>
   );
