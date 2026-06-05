@@ -34,13 +34,7 @@ This repo powers my personal portfolio at [varunchikkala.dev](https://varunchikk
 
 ## Deployment
 
-This site deploys automatically to **GitHub Pages** via GitHub Actions on every push to `main` (see `.github/workflows/deploy.yml`).
-
-Setup:
-- In the repo, go to `Settings → Pages` and set **Source** to **GitHub Actions**.
-- Push to `main` — the workflow builds the SPA and publishes it to Pages.
-
-No secrets or external accounts required.
+Deployment is handled manually.
 
 ---
 
