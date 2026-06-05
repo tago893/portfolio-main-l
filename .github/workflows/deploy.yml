@@ -32,15 +32,63 @@ jobs:
       - name: Build for Vercel
         run: bun run build
 
-      - name: List build output
+      - name: Generate build inspection report
         if: always()
         run: |
-          echo "=== .vercel/output tree ==="
-          ls -laR .vercel/output || echo "No .vercel/output directory"
-          echo "=== dist tree ==="
-          ls -laR dist || echo "No dist directory"
-          echo "=== .output tree ==="
-          ls -laR .output || echo "No .output directory"
+          mkdir -p build-inspection
+
+          {
+            echo "=== .vercel/output recursive listing ==="
+            ls -laR .vercel/output 2>/dev/null || echo "No .vercel/output directory"
+            echo
+            echo "=== dist recursive listing ==="
+            ls -laR dist 2>/dev/null || echo "No dist directory"
+            echo
+            echo "=== .output recursive listing ==="
+            ls -laR .output 2>/dev/null || echo "No .output directory"
+          } > build-inspection/listing.txt
+
+          {
+            echo "=== .vercel/output (find) ==="
+            find .vercel/output -type f 2>/dev/null | sort || true
+            echo
+            echo "=== dist (find) ==="
+            find dist -type f 2>/dev/null | sort || true
+            echo
+            echo "=== .output (find) ==="
+            find .output -type f 2>/dev/null | sort || true
+          } > build-inspection/files.txt
+
+          # Copy key manifest/config files for quick inspection
+          for f in \
+            .vercel/output/config.json \
+            .vercel/output/builds.json \
+            .vercel/project.json \
+            vercel.json; do
+            if [ -f "$f" ]; then
+              dest="build-inspection/$(echo "$f" | tr '/' '_')"
+              cp "$f" "$dest"
+            fi
+          done
+
+          # Copy any function .vc-config.json files
+          find .vercel/output -name '.vc-config.json' 2>/dev/null | while read -r vc; do
+            dest="build-inspection/vc-config_$(echo "$vc" | tr '/' '_').json"
+            cp "$vc" "$dest"
+          done
+
+          echo "=== build-inspection contents ==="
+          ls -la build-inspection
+          cat build-inspection/listing.txt
+
+      - name: Upload build inspection artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-inspection
+          path: build-inspection
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Upload Vercel output artifact
         if: always()
