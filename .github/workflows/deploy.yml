@@ -32,5 +32,35 @@ jobs:
       - name: Build for Vercel
         run: bun run build
 
+      - name: List build output
+        if: always()
+        run: |
+          echo "=== .vercel/output tree ==="
+          ls -laR .vercel/output || echo "No .vercel/output directory"
+          echo "=== dist tree ==="
+          ls -laR dist || echo "No dist directory"
+          echo "=== .output tree ==="
+          ls -laR .output || echo "No .output directory"
+
+      - name: Upload Vercel output artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vercel-output
+          path: .vercel/output
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Upload dist artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-output
+          path: |
+            dist
+            .output
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Deploy to Vercel
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
