@@ -1,9 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Code2, Server, Network, Database, Cloud,
-  Coffee, Terminal, Table, Zap, Beaker,
-  Globe, Boxes, Activity, MessageSquare, MessageCircle,
-  Search, GitBranch, Wrench, Box, Hexagon, Clock,
+  Code2,
+  Server,
+  Network,
+  Database,
+  Cloud,
+  Coffee,
+  Terminal,
+  Table,
+  Zap,
+  Beaker,
+  Globe,
+  Boxes,
+  Activity,
+  MessageSquare,
+  MessageCircle,
+  Search,
+  GitBranch,
+  Wrench,
+  Box,
+  Hexagon,
+  Clock,
 } from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -56,48 +73,41 @@ const skillGroups: { label: string; icon: typeof Code2; items: string[] }[] = [
   {
     label: "Cloud & DevOps",
     icon: Cloud,
-    items: [
-      "AWS (EC2 / S3 / RDS / SQS)",
-      "GCP Cloud Run",
-      "Docker",
-      "Kubernetes",
-      "GitHub Actions",
-      "Jenkins",
-    ],
+    items: ["AWS (EC2 / S3 / RDS / SQS)", "GCP Cloud Run", "Docker", "Kubernetes", "GitHub Actions", "Jenkins"],
   },
 ];
 
 const skillIconMap: Record<string, LucideIcon> = {
-  "Java": Coffee,
-  "Python": Code2,
-  "SQL": Table,
-  "JavaScript": Code2,
-  "TypeScript": Code2,
-  "Bash": Terminal,
+  Java: Coffee,
+  Python: Code2,
+  SQL: Table,
+  JavaScript: Code2,
+  TypeScript: Code2,
+  Bash: Terminal,
   "Spring Boot": Server,
-  "Django": Box,
-  "FastAPI": Zap,
-  "Flask": Beaker,
+  Django: Box,
+  FastAPI: Zap,
+  Flask: Beaker,
   "REST APIs": Globe,
-  "Microservices": Boxes,
+  Microservices: Boxes,
   "Apache Kafka": Activity,
   "AWS SQS": MessageSquare,
   "GCP Pub/Sub": MessageCircle,
-  "RabbitMQ": MessageSquare,
+  RabbitMQ: MessageSquare,
   "Event-driven": Activity,
-  "Async": Clock,
-  "PostgreSQL": Database,
-  "MySQL": Database,
-  "Redis": Database,
-  "Elasticsearch": Search,
-  "Milvus": Search,
-  "MongoDB": Database,
+  Async: Clock,
+  PostgreSQL: Database,
+  MySQL: Database,
+  Redis: Database,
+  Elasticsearch: Search,
+  Milvus: Search,
+  MongoDB: Database,
   "AWS (EC2 / S3 / RDS / SQS)": Cloud,
   "GCP Cloud Run": Cloud,
-  "Docker": Box,
-  "Kubernetes": Hexagon,
+  Docker: Box,
+  Kubernetes: Hexagon,
   "GitHub Actions": GitBranch,
-  "Jenkins": Wrench,
+  Jenkins: Wrench,
 };
 
 const experience: {
@@ -142,12 +152,10 @@ const experience: {
   },
 ];
 
-
-
-
-
 function HomePage() {
-  const posts = getAllPosts().filter((p) => !p.tags.includes("draft")).slice(0, 3);
+  const posts = getAllPosts()
+    .filter((p) => !p.tags.includes("draft"))
+    .slice(0, 3);
 
   return (
     <div className="bg-background text-zinc-400 font-body antialiased">
@@ -174,11 +182,9 @@ function HomePage() {
                 Backend engineer into search, retrieval, and AI systems.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                MS CS grad from Portland State, building AI and data systems that turn
-                large-scale information into secure, searchable, and usable insights.
-                Into backend engineering, RAG pipelines, vector databases, and LLM
-                orchestration. I like 0-to-1 work. Designing, prototyping, and turning
-                ideas into working systems.
+                MS CS grad from Portland State, building AI and data systems that turn large-scale information into
+                secure, searchable, and usable insights. Into backend engineering, RAG pipelines, vector databases, and
+                LLM orchestration. I like 0-to-1 work. Designing, prototyping, and turning ideas into working systems.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
@@ -239,29 +245,22 @@ function HomePage() {
                 title: "Automated Vulnerability & Malware Analyzer",
                 img: vulnImg,
                 tag: "AI · Security",
-                blurb:
-                  "Python AST-driven SAST with an LLM malware engine emitting structured JSON reports.",
+                blurb: "Python AST-driven SAST with an LLM malware engine emitting structured JSON reports.",
               },
               {
                 title: "MCP DevOps PR Agent",
                 img: mcpImg,
                 tag: "AI · DevTools",
-                blurb:
-                  "FastAPI webhook + MCP servers that turn GitHub PRs and CI logs into LLM-actionable tools.",
+                blurb: "FastAPI webhook + MCP servers that turn GitHub PRs and CI logs into LLM-actionable tools.",
               },
               {
                 title: "AI Conversational Assistant",
                 img: ragImg,
                 tag: "RAG · Vector Search",
-                blurb:
-                  "2.8M paper embeddings in Milvus; ingestion cut from 12h to under 4h per batch.",
+                blurb: "2.8M paper embeddings in Milvus; ingestion cut from 12h to under 4h per batch.",
               },
             ].map((p) => (
-              <Link
-                key={p.title}
-                to="/projects"
-                className="snap-start shrink-0 w-[88vw] sm:w-[420px] group"
-              >
+              <Link key={p.title} to="/projects" className="snap-start shrink-0 w-[88vw] sm:w-[420px] group">
                 <div className="rounded-xl ring-1 ring-zinc-900 overflow-hidden bg-zinc-950 group-hover:ring-accent/40 transition-all">
                   <img
                     src={p.img}
@@ -272,9 +271,7 @@ function HomePage() {
                     className="w-full aspect-[4/3] object-cover"
                   />
                   <div className="p-5">
-                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent mb-3">
-                      {p.tag}
-                    </p>
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent mb-3">{p.tag}</p>
                     <h3 className="font-display text-lg font-semibold text-zinc-100 mb-2 group-hover:text-accent transition-colors">
                       {p.title}
                     </h3>
@@ -292,9 +289,7 @@ function HomePage() {
             <div className="grid lg:grid-cols-12 gap-16">
               <aside className="lg:col-span-4">
                 <div className="sticky top-24 space-y-4">
-                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-6">
-                    At a glance
-                  </h3>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-6">At a glance</h3>
                   <div className="p-5 bg-zinc-900/40 rounded-lg ring-1 ring-zinc-900">
                     <p className="text-sm font-medium text-zinc-100">Focus Areas</p>
                     <ul className="mt-3 space-y-1.5 text-sm text-zinc-500">
@@ -306,9 +301,7 @@ function HomePage() {
                   </div>
                   <div className="p-5 bg-zinc-900/40 rounded-lg ring-1 ring-zinc-900">
                     <p className="text-sm font-medium text-zinc-100">Based in</p>
-                    <p className="mt-3 text-sm text-zinc-500">
-                      Hayward, CA · open to remote and on-site SDE roles.
-                    </p>
+                    <p className="mt-3 text-sm text-zinc-500">Hayward, CA · open to remote and on-site SDE roles.</p>
                   </div>
                   <a
                     href={resumePdf.url}
@@ -318,9 +311,7 @@ function HomePage() {
                     className="block p-5 bg-accent/10 rounded-lg ring-1 ring-accent/30 hover:bg-accent/20 transition-colors"
                   >
                     <p className="text-sm font-medium text-zinc-100">Resume (PDF)</p>
-                    <p className="mt-2 text-xs text-zinc-400">
-                      Full work history, projects, and skills, one page.
-                    </p>
+                    <p className="mt-2 text-xs text-zinc-400">Full work history, projects, and skills, one page.</p>
                   </a>
                 </div>
               </aside>
@@ -328,79 +319,52 @@ function HomePage() {
               <div className="lg:col-span-8 space-y-20">
                 {/* About narrative */}
                 <div>
-                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
-                    About
-                  </h3>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">About</h3>
                   <div className="space-y-5 max-w-[62ch] text-[15px] leading-relaxed text-zinc-400 text-pretty">
                     <p>
-                      My path into software started at VIT Vellore, where a bioinformatics-flavored
-                      CS degree pulled me toward data-heavy problems early, the kind where the
-                      shape of the data matters as much as the code around it.
-                    </p>
-                    <p>
-                      My first taste of real engineering came building full-stack
-                      dashboards and data models for an ed-tech platform. I worked with Neo4j,
-                      PHP, Laravel, and MySQL, shipped features across the stack, and learned
-                      how messy a product feels right before a release, and how good it feels
-                      to fix the last bug at midnight.
-                    </p>
-                    <p>
                       I moved to the U.S. for my{" "}
-                      <span className="text-zinc-200">MS in Computer Science at Portland State</span>,
-                      and that's where things clicked. I went deep on distributed systems, data
-                      engineering, and LLMs, and started building the kind of work I actually want
-                      to do for a living: a RAG pipeline over 2.8M+ ArXiv papers with SPECTER
-                      embeddings on Milvus, a provider-agnostic LLM service layer, a batch
-                      ingestion pipeline that chews through 80K papers per run. Cutting query
-                      latency by 66% wasn't a metric on a slide. it was the moment search felt
-                      like it belonged to the user instead of the system.
+                      <span className="text-zinc-200">MS in Computer Science at Portland State</span>, and that's where
+                      things clicked. I went deep on distributed systems, data engineering, and LLMs, and started
+                      building the kind of work I actually want to do for a living: a RAG pipeline over 2.8M+ ArXiv
+                      papers with SPECTER embeddings on Milvus, a provider-agnostic LLM service layer, a batch ingestion
+                      pipeline that chews through 80K papers per run. Cutting query latency by 66% wasn't a metric on a
+                      slide. it was the moment search felt like it belonged to the user instead of the system.
                     </p>
                     <p>
-                      Alongside research, I worked with{" "}
-                      <span className="text-zinc-200">the Computer Action Team</span> at PSU,
-                      keeping Linux and Windows lab environments running for the College of
-                      Engineering. Tickets, scripting, late-night reboots. unglamorous, but it
-                      gave me a respect for the boring parts of reliability that no class ever
-                      could.
+                      Alongside research, I worked with <span className="text-zinc-200">the Computer Action Team</span>{" "}
+                      at PSU, keeping Linux and Windows lab environments running for the College of Engineering.
+                      Tickets, scripting, late-night reboots. unglamorous, but it gave me a respect for the boring parts
+                      of reliability that no class ever could.
                     </p>
                     <p>
-                      Today I'm an early-career engineer at{" "}
-                      <span className="text-zinc-200">Live Music Project</span>, building backend
-                      services for event operations, hardening analytics, and shipping access
-                      control across internal tools. I'm a junior SDE, and I lean into that
-                      honestly. Im here to learn from people who've shipped at scale, take on the
-                      unsexy work, and grow into the kind of engineer teams actually want around.
+                      Today I'm an early-career engineer at <span className="text-zinc-200">Live Music Project</span>,
+                      building backend services for event operations, hardening analytics, and shipping access control
+                      across internal tools. I'm a junior SDE, and I lean into that honestly. Im here to learn from
+                      people who've shipped at scale, take on the unsexy work, and grow into the kind of engineer teams
+                      actually want around.
                     </p>
                     <p>
                       The work I want to do next sits at the intersection of{" "}
-                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>. the systems that quietly make information findable and useful at scale.
-                      If that's the world you live in, I'd love to talk.
+                      <span className="text-zinc-200">search, retrieval, and AI infrastructure</span>. the systems that
+                      quietly make information findable and useful at scale. If that's the world you live in, I'd love
+                      to talk.
                     </p>
                   </div>
                 </div>
 
                 {/* Experience */}
                 <div>
-                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
-                    Experience
-                  </h3>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">Experience</h3>
                   <div className="space-y-10">
                     {experience.map((job, i) => (
-                      <div
-                        key={job.role + job.org}
-                        className="relative pl-8 border-l border-zinc-900/80"
-                      >
+                      <div key={job.role + job.org} className="relative pl-8 border-l border-zinc-900/80">
                         <div
                           className={`absolute -left-[5px] top-1 size-2.5 rounded-full ring-4 ring-background ${
                             i === 0 ? "bg-accent" : "bg-zinc-700"
                           }`}
                         />
-                        <p className="text-xs font-medium text-accent uppercase tracking-wider mb-2">
-                          {job.period}
-                        </p>
-                        <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">
-                          {job.role}
-                        </h4>
+                        <p className="text-xs font-medium text-accent uppercase tracking-wider mb-2">{job.period}</p>
+                        <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">{job.role}</h4>
                         <p className="text-zinc-500 mb-4">{job.org}</p>
                         <ul className="space-y-2 max-w-[60ch]">
                           {job.bullets.map((b) => (
@@ -433,22 +397,16 @@ function HomePage() {
 
                 {/* Education */}
                 <div>
-                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
-                    Education
-                  </h3>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">Education</h3>
                   <div className="space-y-10">
                     <div className="relative pl-8 border-l border-zinc-900/80">
                       <div className="absolute -left-[5px] top-1 size-2.5 rounded-full bg-accent ring-4 ring-background" />
-                      <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">
-                        MS in Computer Science
-                      </h4>
-                      <p className="text-zinc-500 mb-3">
-                        Portland State University · 2023 - 2025 · GPA 3.88
-                      </p>
+                      <h4 className="text-xl font-display font-semibold text-zinc-100 mb-1">MS in Computer Science</h4>
+                      <p className="text-zinc-500 mb-3">Portland State University · 2023 - 2025 · GPA 3.88</p>
                       <p className="max-w-[60ch] text-pretty leading-relaxed text-sm text-zinc-400">
-                        Coursework: Data Engineering, Large Language Models, Software Engineering,
-                        Database Management Systems, Cloud Engineering, Generative Security,
-                        Computer Networks, Advanced Data Structures and Algorithms.
+                        Coursework: Data Engineering, Large Language Models, Software Engineering, Database Management
+                        Systems, Cloud Engineering, Generative Security, Computer Networks, Advanced Data Structures and
+                        Algorithms.
                       </p>
                     </div>
                     <div className="relative pl-8 border-l border-zinc-900/80">
@@ -458,8 +416,8 @@ function HomePage() {
                       </h4>
                       <p className="text-zinc-500 mb-3">VIT, Vellore · 2019 - 2023</p>
                       <p className="max-w-[60ch] text-pretty leading-relaxed text-sm text-zinc-400">
-                        Foundation in algorithms, systems, and computational biology, where the
-                        pull toward data-heavy software first started.
+                        Foundation in algorithms, systems, and computational biology, where the pull toward data-heavy
+                        software first started.
                       </p>
                     </div>
                   </div>
@@ -467,12 +425,10 @@ function HomePage() {
 
                 {/* Projects CTA */}
                 <div>
-                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-4">
-                    Projects
-                  </h3>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-4">Projects</h3>
                   <p className="max-w-[56ch] mb-6 text-zinc-400">
-                    The full catalog, grouped by AI &amp; developer tools, data &amp; ML, and web
-                    &amp; APIs, lives on a dedicated page.
+                    The full catalog, grouped by AI &amp; developer tools, data &amp; ML, and web &amp; APIs, lives on a
+                    dedicated page.
                   </p>
                   <Link
                     to="/projects"
@@ -484,9 +440,7 @@ function HomePage() {
 
                 {/* Skills */}
                 <div>
-                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">
-                    Skills & Tools
-                  </h3>
+                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-8">Skills & Tools</h3>
                   <div className="space-y-6">
                     {skillGroups.map((group) => {
                       const Icon = group.icon;
