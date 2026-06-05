@@ -36,8 +36,7 @@ export function SiteFooter() {
             <Mail className="size-4" /> Email
           </a>
         </div>
-        <div className="flex items-center gap-4 text-xs text-zinc-600">
-          <VisitCounter />
+        <div className="text-xs text-zinc-600">
           <span>© {year} · Hayward, CA</span>
         </div>
       </div>
