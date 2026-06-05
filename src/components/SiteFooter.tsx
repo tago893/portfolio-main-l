@@ -12,7 +12,7 @@ export function SiteFooter() {
         </div>
         <div className="flex gap-6 text-sm text-zinc-400">
           <a
-            href="https://github.com/varunchikkala"
+            href="https://github.com/tago893"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
@@ -21,7 +21,7 @@ export function SiteFooter() {
             <Github className="size-4" /> GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/varun-chikkala/"
+            href="https://www.linkedin.com/in/cv36"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
