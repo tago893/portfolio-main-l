@@ -182,7 +182,7 @@ function HomePage() {
                 Software engineer who likes building things that ship.
               </h1>
               <p className="text-lg md:text-xl leading-relaxed max-w-[56ch] text-pretty mb-12">
-                MS CS grad from Portland State. Full-stack SDE at Live Music Project, building 0-to-1 products that actually ship. Into backend engineering, data systems, and AI tooling. Looking for a team I can learn from while building work that matters.
+                MS CS grad from Portland State. Full-stack SDE at Live Music Project, learning how to build 0-to-1 products that actually ship. Into backend engineering, data systems, and AI tooling. Looking for a team I can grow with while building work that matters.
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <Link
