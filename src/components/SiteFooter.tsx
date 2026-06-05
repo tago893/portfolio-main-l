@@ -1,5 +1,4 @@
 import { Github, Linkedin, Mail } from "lucide-react";
-import { VisitCounter } from "./VisitCounter";
 
 export function SiteFooter() {
   const year = new Date().getUTCFullYear();
