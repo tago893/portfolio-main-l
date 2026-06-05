@@ -34,12 +34,13 @@ This repo powers my personal portfolio at [varunchikkala.dev](https://varunchikk
 
 ## Deployment
 
-This site deploys automatically to Vercel via GitHub Actions on every push to `main`.
+This site deploys automatically to **GitHub Pages** via GitHub Actions on every push to `main` (see `.github/workflows/deploy.yml`).
 
-Required repository secrets (`Settings → Secrets and variables → Actions`):
-- `VERCEL_TOKEN` — Vercel personal access token
-- `VERCEL_ORG_ID` — Organization ID from `vercel.json`
-- `VERCEL_PROJECT_ID` — Project ID from `vercel.json`
+Setup:
+- In the repo, go to `Settings → Pages` and set **Source** to **GitHub Actions**.
+- Push to `main` — the workflow builds the SPA and publishes it to Pages.
+
+No secrets or external accounts required.
 
 ---
 
