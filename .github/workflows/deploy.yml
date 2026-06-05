@@ -118,6 +118,7 @@ jobs:
           echo "Deployed to: $url"
 
       - name: Smoke test production URL
+        id: smoke
         run: |
           url="${{ steps.deploy.outputs.url }}"
           if [ -z "$url" ]; then
@@ -125,10 +126,11 @@ jobs:
             exit 1
           fi
 
+          mkdir -p smoke-test-results
           echo "Smoke testing $url"
           # Retry up to 5 times to allow propagation
           for i in 1 2 3 4 5; do
-            status=$(curl -s -o /tmp/body.txt -w "%{http_code}" -L "$url" || echo "000")
+            status=$(curl -s -o smoke-test-results/body.txt -D smoke-test-results/headers.txt -w "%{http_code}" -L "$url" || echo "000")
             echo "Attempt $i: HTTP $status"
             if [ "$status" = "200" ]; then
               echo "Smoke test passed"
@@ -137,8 +139,12 @@ jobs:
             sleep 5
           done
 
+          echo "=== Response headers ==="
+          cat smoke-test-results/headers.txt
+          echo
+
           echo "=== Response body (first 2KB) ==="
-          head -c 2048 /tmp/body.txt || true
+          head -c 2048 smoke-test-results/body.txt || true
           echo
 
           if [ "$status" = "401" ]; then
@@ -152,4 +158,13 @@ jobs:
           fi
           echo "FAIL: unexpected status $status"
           exit 1
+
+      - name: Upload smoke test results
+        if: failure() && steps.smoke.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-test-results
+          path: smoke-test-results
+          if-no-files-found: warn
+          retention-days: 7
 
