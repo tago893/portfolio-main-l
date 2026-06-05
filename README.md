@@ -31,36 +31,6 @@ This repo powers my personal portfolio at [varunchikkala.dev](https://varunchikk
 | **MCP Agent** | Model Context Protocol agent with GitHub tools and agentic workflows | Python, FastAPI, MCP |
 
 
-## Deployment
-
-This site deploys automatically to **Vercel** via GitHub Actions on every push to `main`.
-
-### Setup (one-time)
-
-1. **Create a Vercel account** and import your GitHub repo at [vercel.com/new](https://vercel.com/new)
-2. **Get your Vercel token**:  
-   Go to Vercel Dashboard → Settings → Tokens → Create new token
-3. **Add the token to GitHub secrets**:  
-   Repo Settings → Secrets and variables → Actions → New repository secret  
-   Name: `VERCEL_TOKEN`  
-   Value: your token from step 2
-4. **Push to `main`** — the workflow in `.github/workflows/deploy.yml` will build and deploy automatically
-
-### Manual Deploy
-
-If you want to deploy manually from your local machine:
-
-```bash
-# Install Vercel CLI
-bun add -g vercel
-
-# Login and link project (one-time)
-vercel login
-vercel link
-
-# Deploy
-NITRO_PRESET=vercel vercel --prod
-```
 
 ---
 
