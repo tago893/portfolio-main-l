@@ -92,6 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Varun Chikkala" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Varun Chikkala | Engineer & Builder" },
+      { name: "description", content: "portfolio" },
+      { property: "og:description", content: "portfolio" },
+      { name: "twitter:description", content: "portfolio" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/58ef37e6-56ba-453d-a557-71f509c36d09/id-preview-e7a982ab--1b7844ab-a781-45fa-a1a6-152901d6006d.lovable.app-1780631621720.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/58ef37e6-56ba-453d-a557-71f509c36d09/id-preview-e7a982ab--1b7844ab-a781-45fa-a1a6-152901d6006d.lovable.app-1780631621720.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
