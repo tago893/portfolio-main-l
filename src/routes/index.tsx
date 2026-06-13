@@ -25,9 +25,6 @@ import {
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getAllPosts, formatDate } from "@/lib/posts";
-import vulnImg from "@/assets/vuln-analyzer.jpg";
-import mcpImg from "@/assets/mcp-agent.jpg";
-import ragImg from "@/assets/rag-assistant.jpg";
 import resumePdf from "@/assets/resume.pdf.asset.json";
 import type { LucideIcon } from "lucide-react";
 
