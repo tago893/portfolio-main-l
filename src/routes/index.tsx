@@ -213,73 +213,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Projects carousel preview */}
-        <section id="projects" className="py-24 bg-zinc-950/30 border-y border-zinc-900/60 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 mb-10">
-            <div className="flex items-end justify-between gap-6 flex-wrap">
-              <div>
-                <span className="text-accent font-display text-sm font-semibold tracking-widest uppercase mb-3 block">
-                  Selected Work
-                </span>
-                <h2 className="font-display text-4xl font-semibold text-zinc-100 text-balance">
-                  Selected work, shipped recently.
-                </h2>
-              </div>
-              <Link
-                to="/projects"
-                className="text-sm font-medium text-accent hover:underline decoration-2 underline-offset-4"
-              >
-                Browse all projects →
-              </Link>
-            </div>
-          </div>
-
-          <div
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-6 max-w-7xl mx-auto scroll-px-6"
-            style={{ scrollbarWidth: "thin" }}
-          >
-            {[
-              {
-                title: "Automated Vulnerability & Malware Analyzer",
-                img: vulnImg,
-                tag: "AI · Security",
-                blurb: "Python AST-driven SAST with an LLM malware engine emitting structured JSON reports.",
-              },
-              {
-                title: "MCP DevOps PR Agent",
-                img: mcpImg,
-                tag: "AI · DevTools",
-                blurb: "FastAPI webhook + MCP servers that turn GitHub PRs and CI logs into LLM-actionable tools.",
-              },
-              {
-                title: "AI Conversational Assistant",
-                img: ragImg,
-                tag: "RAG · Vector Search",
-                blurb: "2.8M paper embeddings in Milvus; ingestion cut from 12h to under 4h per batch.",
-              },
-            ].map((p) => (
-              <Link key={p.title} to="/projects" className="snap-start shrink-0 w-[88vw] sm:w-[420px] group">
-                <div className="rounded-xl ring-1 ring-zinc-900 overflow-hidden bg-zinc-950 group-hover:ring-accent/40 transition-all">
-                  <img
-                    src={p.img}
-                    alt={`${p.title} preview`}
-                    width={1280}
-                    height={960}
-                    loading="lazy"
-                    className="w-full aspect-[4/3] object-cover"
-                  />
-                  <div className="p-5">
-                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent mb-3">{p.tag}</p>
-                    <h3 className="font-display text-lg font-semibold text-zinc-100 mb-2 group-hover:text-accent transition-colors">
-                      {p.title}
-                    </h3>
-                    <p className="text-sm text-zinc-500 text-pretty">{p.blurb}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* Projects section temporarily removed — being refreshed. */}
 
         {/* About: Experience, education, more projects, skills */}
         <section id="about" className="py-32 px-6">
@@ -424,20 +358,6 @@ function HomePage() {
                   </div>
                 </div>
 
-                {/* Projects CTA */}
-                <div>
-                  <h3 className="font-display text-2xl font-semibold text-zinc-100 mb-4">Projects</h3>
-                  <p className="max-w-[56ch] mb-6 text-zinc-400">
-                    The full catalog, grouped by AI &amp; developer tools, data &amp; ML, and web &amp; APIs, lives on a
-                    dedicated page.
-                  </p>
-                  <Link
-                    to="/projects"
-                    className="inline-flex items-center gap-2 bg-accent text-zinc-100 px-5 py-2.5 rounded-md ring-1 ring-accent text-sm font-medium hover:bg-accent/90 transition-all"
-                  >
-                    Browse all projects →
-                  </Link>
-                </div>
 
                 {/* Skills */}
                 <div>
