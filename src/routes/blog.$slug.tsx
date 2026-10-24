@@ -46,7 +46,7 @@ export const Route = createFileRoute("/blog/$slug")({
     <div className="bg-background text-zinc-400 min-h-screen grid place-items-center p-6">
       <div className="text-center">
         <h1 className="font-display text-2xl text-zinc-100 mb-3">Something went wrong</h1>
-        <p className="text-sm">{error.message}</p>
+        <p className="text-sm">{error instanceof Error ? error.message : String(error)}</p>
       </div>
     </div>
   ),
