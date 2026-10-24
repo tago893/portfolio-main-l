@@ -34,7 +34,20 @@ This repo powers my personal portfolio at [varunchikkala.dev](https://varunchikk
 
 ## Deployment
 
-Deployment is handled manually.
+The site deploys to **GitHub Pages** automatically through GitHub Actions
+(`.github/workflows/deploy-pages.yml`) on every push to `main`.
+
+One-time setup in the GitHub repo: **Settings → Pages → Build and deployment →
+Source: GitHub Actions**.
+
+Notes:
+
+- The repo is served at `https://<owner>.github.io/portfolio-main-l/`, so the
+  workflow builds with `VITE_BASE_PATH=/portfolio-main-l/`. If the repository
+  name changes, update `BASE_PATH` in the workflow to match.
+- The build produces a static SPA (`dist/client`), so no server runs on
+  Pages; all pages render in the browser. Lovable's published URL is
+  unaffected and keeps server rendering.
 
 ---
 
